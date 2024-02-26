@@ -1,5 +1,6 @@
 package BW5group5.GestioneClientiFatture.service;
 
+import BW5group5.GestioneClientiFatture.dto.FatturaRequest;
 import BW5group5.GestioneClientiFatture.exception.NotFoundException;
 import BW5group5.GestioneClientiFatture.model.Fattura;
 import BW5group5.GestioneClientiFatture.repository.FatturaRepository;
@@ -21,7 +22,10 @@ public class FatturaService {
         return fatturaRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Fattura non trovata"));
     }
-    public Fattura saveFattura(Fattura fattura) {
+
+
+
+    public Fattura saveFattura(FatturaRequest fattura) {
         return fatturaRepository.save(fattura);
     }
     public void deleteFattura(Fattura fattura) {

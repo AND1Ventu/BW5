@@ -14,5 +14,6 @@ public class Comune {
     private String comune;
     private String provincia;
     private String sigla;
+    private int cap;
 
 }

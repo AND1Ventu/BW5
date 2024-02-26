@@ -1,5 +1,8 @@
 package BW5group5.GestioneClientiFatture.service;
 
+import BW5group5.GestioneClientiFatture.dto.IndirizzoRequest;
+import BW5group5.GestioneClientiFatture.exception.NotFoundException;
+import BW5group5.GestioneClientiFatture.model.Comune;
 import BW5group5.GestioneClientiFatture.model.Indirizzo;
 import BW5group5.GestioneClientiFatture.repository.IndirizzoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +22,13 @@ public class IndirizzoService {
         return indirizzoRepository.findAll(pageable);
     }
 
-    public Auto getIndirizzoById(int id) throws NotFoundException {
-        return autoRepository.findById(id).orElseThrow(() -> new NotFoundException("Auto con id=" + id + " non trovata"));
+    public Indirizzo getIndirizzoById(int id) throws NotFoundException {
+        return indirizzoRepository.findById(id).orElseThrow(() -> new NotFoundException("Indirizzo con id=" + id + " non trovata"));
     }
 
-    public Auto saveAuto(AutoRequest autoRequest) throws NotFoundException {
+    public Indirizzo saveIndirizzo(IndirizzoRequest indirizzoRequest) throws NotFoundException {
 
-        Persona persona = personaService.getPersonaById(autoRequest.getIdPersona());
+        Comune comune = comuneService.getComuneById(indirizzoRequest());
 
         Auto auto = new Auto();
         auto.setAlimentazione(autoRequest.getAlimentazione());

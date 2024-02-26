@@ -14,7 +14,8 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCliente;
+    @Column(name = "id_cliente")
+    private int idCliente;
     private String ragioneSociale;
     private String partitaIva;
     private String email;
@@ -32,5 +33,8 @@ public class Cliente {
 
     @OneToMany(mappedBy = "addresses")
     private List<Indirizzo> indirizzi;
+
+    @OneToMany(mappedBy = "fattura")
+    private List<Fattura> fatture;
 
 }

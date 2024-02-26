@@ -1,5 +1,7 @@
 package BW5group5.GestioneClientiFatture.dto;
 
+import BW5group5.GestioneClientiFatture.model.Fattura;
+import BW5group5.GestioneClientiFatture.model.Indirizzo;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -57,10 +59,10 @@ public class ClienteRequest {
     private TipoAzienda tipoAzienda;
 
     @OneToMany(mappedBy = "indirizzi")
-    private List<IndirizzoRequest> indirizzi;
+    private List<Indirizzo> indirizzi;
 
     @OneToMany(mappedBy = "fatture")
-    private List<FatturaRequest> fatture;
+    private List<Fattura> fatture;
 
 
 }

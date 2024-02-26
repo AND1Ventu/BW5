@@ -13,7 +13,6 @@ public class Indirizzo {
     private String via;
     private String civico;
     private String localita;
-    private int cap;
 
     @OneToOne
     @JoinColumn(name = "id_comune", referencedColumnName = "id")

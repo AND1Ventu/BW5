@@ -20,18 +20,18 @@ public class UtenteController {
         return utenteService.getAllUtenti();
     }
 
-    @GetMapping("/utenti/{username}")
-    public Utente getUtenteByUsername(@PathVariable String username){
-        return utenteService.getUtenteByUsername(username);
+    @GetMapping("/utenti/{id}")
+    public Utente getUtenteById(@PathVariable int id){
+        return utenteService.getUtenteById(id);
     }
 
-    @PutMapping("/utenti/{username}")
-    public Utente updateUtente(@PathVariable String username, @RequestBody @Validated UtenteRequest utenteRequest, BindingResult bindingResult){
+    @PutMapping("/utenti/{id}")
+    public Utente updateUtente(@PathVariable int id, @RequestBody @Validated UtenteRequest utenteRequest, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             throw new BadRequestException(bindingResult.getAllErrors().toString());
         }
 
-        return utenteService.updateUtente(username, utenteRequest);
+        return utenteService.updateUtente(id, utenteRequest);
 
     }
     @PostMapping("/utenti")
@@ -40,15 +40,15 @@ public class UtenteController {
             throw new BadRequestException(bindingResult.getAllErrors().toString());
         }
 
-        return utenteService.save(utenteRequest);
+        return utenteService.saveUtente(utenteRequest);
     }
-    @DeleteMapping("/utenti/{username}")
-    public void deleteUtente(@PathVariable String username){
+    @DeleteMapping("/utenti/{id}")
+    public void deleteUtente(@PathVariable int id){
 
-        utenteService.deleteUtente(username);
+        utenteService.deleteUtente(id);
     }
-    @PatchMapping("/utenti/{username}")
-    public Utente changeTipologia(@PathVariable String username, @RequestBody String tipologia){
-        return utenteService.updateTipologiaUtente(username, tipologia);
+    @PatchMapping("/utenti/{id}")
+    public Utente changeTipologia(@PathVariable int id, @RequestBody String tipologia){
+        return utenteService.updateTipologiaUtente(id, tipologia);
     }
 }

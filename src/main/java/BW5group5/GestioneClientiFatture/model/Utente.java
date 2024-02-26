@@ -8,6 +8,7 @@ import lombok.Data;
 public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_utente")
     private int idUtente;
 
     @Column(unique = true)

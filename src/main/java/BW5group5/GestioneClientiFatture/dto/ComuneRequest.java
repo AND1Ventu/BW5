@@ -1,6 +1,7 @@
 package BW5group5.GestioneClientiFatture.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -15,4 +16,6 @@ public class ComuneRequest {
     @NotBlank(message = "Il campo 'sigla' non può essere vuoto")
     private String sigla;
 
+    @NotNull(message = "Il campo 'cap' non può essere vuoto")
+    private int cap;
 }

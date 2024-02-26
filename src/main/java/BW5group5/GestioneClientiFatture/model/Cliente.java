@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -26,7 +24,7 @@ public class Cliente {
     private String telefono;
     private String emailContatto;
     private String nomeContatto;
-    private String cognomelContatto;
+    private String cognomeContatto;
     private String telefonoContatto;
     private String logoAziendale;
     private TipoAzienda tipoAzienda;

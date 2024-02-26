@@ -18,7 +18,7 @@ public class UtenteService {
     @Autowired
     private PasswordEncoder encoder;
 
-    public Utente save(UtenteRequest utenteRequest) {
+    public Utente saveUtente(UtenteRequest utenteRequest) {
         Utente utente = new Utente();
 
         utente.setUsername(utenteRequest.getUsername());
@@ -42,8 +42,8 @@ public class UtenteService {
     public List<Utente> getAllUtenti(){
         return utenteRepository.findAll();
     }
-    public Utente updateUtente(String username, UtenteRequest utenteRequest){
-        Utente utente = getUtenteByUsername(username);
+    public Utente updateUtente(int id, UtenteRequest utenteRequest){
+        Utente utente = getUtenteById(id);
 
         utente.setUsername(utenteRequest.getUsername());
         utente.setPasswordHashed(utenteRequest.getPasswordHashed());
@@ -55,14 +55,14 @@ public class UtenteService {
         return utenteRepository.save(utente);
     }
 
-    public Utente updateTipologiaUtente(String username,String tipologia){
-        Utente utente = getUtenteByUsername(username);
+    public Utente updateTipologiaUtente(int id,String tipologia){
+        Utente utente = getUtenteById(id);
 
         utente.setTipologia(Tipologia.valueOf(tipologia));
         return utenteRepository.save(utente);
     }
 
-    public void deleteUtente(String username){
-        utenteRepository.deleteByUsername(username).orElseThrow(()->new NotFoundException("Utente non trovato"));
+    public void deleteUtente(int id){
+        utenteRepository.deleteById(id).orElseThrow(()->new NotFoundException("Utente non trovato"));
     }
 }

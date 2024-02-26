@@ -16,9 +16,6 @@ public class IndirizzoRequest {
     @NotBlank(message = "Il campo 'localita' non può essere vuoto")
     private String localita;
 
-    @NotNull(message = "Il campo 'cap' non può essere vuoto")
-    private int cap;
-
 
     @NotNull(message = "Il campo 'comune' non può essere vuoto")
     private ComuneRequest comune;

@@ -43,5 +43,9 @@ public class ComuneService {
 
         comuneRepository.save(comune);
     }
+
+    public Comune findComuneById(int id) {
+        return comuneRepository.findComuneById(id);
+    }
 }
 

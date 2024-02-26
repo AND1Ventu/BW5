@@ -26,47 +26,39 @@ public class IndirizzoService {
         return indirizzoRepository.findById(id).orElseThrow(() -> new NotFoundException("Indirizzo con id=" + id + " non trovata"));
     }
 
-    public Indirizzo saveIndirizzo(IndirizzoRequest indirizzoRequest) throws NotFoundException {
+    public Indirizzo saveIndirizzo(int idComune, IndirizzoRequest indirizzoRequest) throws NotFoundException {
 
-        Comune comune = comuneService.getComuneById(indirizzoRequest());
+        Comune comune = comuneService.findComuneById(idComune);
 
-        Auto auto = new Auto();
-        auto.setAlimentazione(autoRequest.getAlimentazione());
-        auto.setNome(autoRequest.getNome());
-        auto.setCilindrata(autoRequest.getCilindrata());
-        auto.setMarca(autoRequest.getMarca());
-        auto.setPersona(persona);
+        Indirizzo indirizzo = new Indirizzo();
+        indirizzo.setVia(indirizzoRequest.getVia());
+        indirizzo.setCivico(indirizzo.getCivico());
+        indirizzo.setLocalita(indirizzoRequest.getLocalita());
+        indirizzo.setComune(comune);
 
-        return autoRepository.save(auto);
-
-    }
-
-    public Auto updateAuto(int id, AutoRequest autoRequest) throws NotFoundException {
-        Auto auto = getAutoById(id);
-
-        Persona persona = personaService.getPersonaById(autoRequest.getIdPersona());
-
-        auto.setAlimentazione(autoRequest.getAlimentazione());
-        auto.setNome(autoRequest.getNome());
-        auto.setCilindrata(autoRequest.getCilindrata());
-        auto.setMarca(autoRequest.getMarca());
-        auto.setPersona(persona);
-
-        return autoRepository.save(auto);
+        return indirizzoRepository.save(indirizzo);
 
     }
 
-    public void deleteAuto(int id) throws NotFoundException {
-        Auto auto = getAutoById(id);
+    public Indirizzo updateIndirizzo(int idComune, IndirizzoRequest indirizzoRequest) throws NotFoundException {
+        Indirizzo indirizzo = getIndirizzoById(idComune);
 
-        autoRepository.delete(auto);
+        Comune comune = comuneService.findComuneById(idComune);
+
+        indirizzo.setVia(indirizzoRequest.getVia());
+        indirizzo.setCivico(indirizzo.getCivico());
+        indirizzo.setLocalita(indirizzoRequest.getLocalita());
+        indirizzo.setComune(comune);
+
+        return indirizzoRepository.save(indirizzo);
+
     }
 
-    public Auto uploadLogo(int id, String url) throws NotFoundException{
-        Auto auto = getAutoById(id);
+    public void deleteIndirizzo(int id) throws NotFoundException {
+        Indirizzo indirizzo = getIndirizzoById(id);
 
-        auto.setLogo(url);
-        return autoRepository.save(auto);
+        indirizzoRepository.delete(indirizzo);
     }
+
 
 }

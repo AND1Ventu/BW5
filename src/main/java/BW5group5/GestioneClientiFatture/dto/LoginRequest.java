@@ -1,4 +1,4 @@
-package BW5group5.GestioneClientiFatture.model;
+package BW5group5.GestioneClientiFatture.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

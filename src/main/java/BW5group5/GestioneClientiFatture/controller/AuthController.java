@@ -3,7 +3,7 @@ package BW5group5.GestioneClientiFatture.controller;
 import BW5group5.GestioneClientiFatture.dto.UtenteRequest;
 import BW5group5.GestioneClientiFatture.exception.BadRequestException;
 import BW5group5.GestioneClientiFatture.exception.LoginFaultException;
-import BW5group5.GestioneClientiFatture.model.LoginRequest;
+import BW5group5.GestioneClientiFatture.dto.LoginRequest;
 import BW5group5.GestioneClientiFatture.model.Utente;
 import BW5group5.GestioneClientiFatture.security.JwtTools;
 import BW5group5.GestioneClientiFatture.service.UtenteService;

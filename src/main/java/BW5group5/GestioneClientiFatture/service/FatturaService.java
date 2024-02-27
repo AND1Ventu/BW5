@@ -2,6 +2,7 @@ package BW5group5.GestioneClientiFatture.service;
 
 import BW5group5.GestioneClientiFatture.dto.FatturaRequest;
 import BW5group5.GestioneClientiFatture.exception.NotFoundException;
+import BW5group5.GestioneClientiFatture.model.Cliente;
 import BW5group5.GestioneClientiFatture.model.Fattura;
 import BW5group5.GestioneClientiFatture.repository.FatturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import java.util.List;
 public class FatturaService {
     @Autowired
     private FatturaRepository fatturaRepository;
+    @Autowired
+    private ClienteService clienteService;
 
     public List<Fattura> getAllFatture() {
         return fatturaRepository.findAll();
@@ -30,5 +33,16 @@ public class FatturaService {
     }
     public void deleteFattura(Fattura fattura) {
         fatturaRepository.delete(fattura);
+    }
+
+    public Fattura updateFattura(int id, FatturaRequest fatturaRequest) {
+        Fattura fattura = getFatturaById(id);
+        Cliente cliente = clienteService.getClienteById(id);
+
+        fattura.setDataEmissione(fatturaRequest.getDataEmissione());
+        fattura.setImporto(fatturaRequest.getImporto());
+        fattura.setStato(fatturaRequest.getStato());
+        fattura.setCliente(cliente);
+        return fatturaRepository.save(fattura);
     }
 }

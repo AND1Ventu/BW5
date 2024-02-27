@@ -45,7 +45,7 @@ public class FatturaController {
             throw new BadRequestException(bindingResult.getAllErrors().toString());
         }
 
-        return fatturaService.aggiornaFattura(id, autoreRequest);
+        return fatturaService.aggiornaFattura(id, clienteRequest);
     }
 
     @DeleteMapping("/fatture/{id}")

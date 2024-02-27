@@ -4,9 +4,11 @@ import BW5group5.GestioneClientiFatture.dto.ClienteRequest;
 import BW5group5.GestioneClientiFatture.exception.NotFoundException;
 import BW5group5.GestioneClientiFatture.model.Cliente;
 import BW5group5.GestioneClientiFatture.repository.ClienteRepository;
+import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Service
@@ -15,16 +17,16 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente saveCliente(Cliente cliente) {
-        return clienteRepository.save(cliente);
+    public Cliente saveCliente(ClienteRequest clienteRequest) {
+        return clienteRepository.save(clienteRequest);
     }
 
     public Cliente getClienteById(int id) {
         return clienteRepository.findById(id).orElseThrow(()->new NotFoundException("Cliente non trovato"));
     }
 
-    public List<Cliente> getAllClienti() {
-        return clienteRepository.findAll();
+    public Page<Cliente> getAllClienti(Pageable pageable) {
+        return clienteRepository.findAll(pageable);
     }
 
     public Cliente updateCliente(int id, ClienteRequest clienteRequest) {
@@ -50,6 +52,12 @@ public class ClienteService {
         }
     public void deleteCliente(int id) {
         clienteRepository.deleteById(id).orElseThrow(()->new NotFoundException("Cliente non trovato"));
+    }
+
+    public Cliente uploadAvatar(int id, String url){
+        Cliente cliente = getClienteById(id);
+        cliente.setLogoAziendale(url);
+        return clienteRepository.save(cliente);
     }
 }
 

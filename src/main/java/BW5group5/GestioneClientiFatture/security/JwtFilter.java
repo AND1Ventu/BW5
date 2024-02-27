@@ -56,7 +56,7 @@ public class JwtFilter extends OncePerRequestFilter {
         System.out.println(parts.length);
         Arrays.stream(parts).forEach(System.out::println);
         if(parts.length==3) {
-            if (parts[1].equals("cliente")) {
+            if (parts[1].equals("clienti")) {
                 int id = Integer.parseInt(parts[2]);
 
                 if(utente.getIdUtente()!=id){

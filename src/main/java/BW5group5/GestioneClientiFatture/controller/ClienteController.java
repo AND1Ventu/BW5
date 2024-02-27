@@ -27,7 +27,6 @@ public class ClienteController {
     private Cloudinary cloudinary;
 
     @GetMapping("/clienti")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public Page<Cliente> getAll(Pageable pageable) {
         return clienteService.getAllClienti(pageable);
     }
@@ -64,5 +63,10 @@ public class ClienteController {
     public Cliente uploadAvatar(@PathVariable int id, @RequestParam("upload") MultipartFile file) throws IOException {
         return clienteService.uploadAvatar(id,
                 (String) cloudinary.uploader().upload(file.getBytes(), new HashMap<>()).get("url"));
+    }
+
+    @GetMapping("/clienti/ordered")
+    public Page<Cliente> getAllClientiOrdered(Pageable pageable) {
+        return clienteService.getAllClientiOrdered(pageable);
     }
 }

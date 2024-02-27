@@ -3,6 +3,8 @@ package BW5group5.GestioneClientiFatture.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 public class Comune {
@@ -19,6 +21,14 @@ public class Comune {
     @ManyToOne
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
+
+    @ManyToMany
+    @JoinTable(
+            name = "comune_indirizzo",
+            joinColumns = @JoinColumn(name = "id_comune"),
+            inverseJoinColumns = @JoinColumn(name = "id_indirizzo")
+    )
+    private List<Indirizzo> indirizzi;
 
 }
 

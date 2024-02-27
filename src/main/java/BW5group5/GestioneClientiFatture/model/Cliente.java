@@ -29,7 +29,12 @@ public class Cliente {
     private String logoAziendale;
     private TipoAzienda tipoAzienda;
 
-    @OneToMany(mappedBy = "cliente")
+    @ManyToMany
+    @JoinTable(
+            name = "cliente_indirizzo",
+            joinColumns = @JoinColumn(name = "id_cliente"),
+            inverseJoinColumns = @JoinColumn(name = "id_indirizzo")
+    )
     private List<Indirizzo> indirizzi;
 
     @OneToMany(mappedBy = "cliente")

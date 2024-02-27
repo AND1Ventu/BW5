@@ -84,17 +84,27 @@ public class ClienteService {
     public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
         return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(pageable);
     }
-    List<Cliente> findByOrderByDataUltimoContatto();
 
-    List<Cliente> findByOrderBySedeLegaleProvincia();
+    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByOrderBySedeLegaleProvincia(pageable);
+    }
+
+    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByFatturatoAnnualeGreaterThan(int fatturato);
+    }
+
+    public Page<Cliente> findAllClientiByDataInserimento(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByDataInserimentoAfter(LocalDate dataInserimento);
+    }
+
+    public Page<Cliente> findAllClientiByDataUltimoContatto(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(LocalDate dataUltimoContatto);
+    }
+
+    public Page<Cliente> findAllClientiByParteNome(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByParteDelNome(pageable);
+    }
 
 
-    List<Cliente> findByFatturatoAnnualeGreaterThan(int minFatturato);
-    List<Cliente> findByDataInserimentoAfter(LocalDate dataInserimento);
-    List<Cliente> findByDataUltimoContattoAfter(LocalDate dataUltimoContatto);
-
-
-    @Query("SELECT c FROM Cliente c WHERE LOWER(c.nome) LIKE LOWER(CONCAT('%', :parteDelNome, '%'))")
-    List<Cliente> findByParteDelNome(@Param("parteDelNome") String parteDelNome);
 
 }

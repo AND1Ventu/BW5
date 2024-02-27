@@ -66,7 +66,7 @@ public class ClienteController {
     }
 
     @GetMapping("/clienti/ordered")
-    public Page<Cliente> getAllClientiOrdered(Pageable pageable) {
-        return clienteService.getAllClientiOrdered(pageable);
+    public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
+        return clienteService.getAllClientiOrderedByName(pageable);
     }
 }

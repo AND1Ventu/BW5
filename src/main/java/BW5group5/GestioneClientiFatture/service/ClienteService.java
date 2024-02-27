@@ -7,7 +7,12 @@ import BW5group5.GestioneClientiFatture.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class ClienteService {
@@ -64,10 +69,32 @@ public class ClienteService {
         cliente.setFatture(clienteRequest.getFatture());
     }
 
-    public Page<Cliente> getAllClientiOrdered(Pageable pageable) {
+    public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
         return (Page<Cliente>) clienteRepository.findByOrderByNome(pageable);
     }
 
+    public Page<Cliente> getAllClientiOrderedByFatturatoAnnuale(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByOrderByFatturatoAnnuale(pageable);
+    }
 
+    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByOrderByDataInserimento(pageable);
+    }
+
+    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(pageable);
+    }
+    List<Cliente> findByOrderByDataUltimoContatto();
+
+    List<Cliente> findByOrderBySedeLegaleProvincia();
+
+
+    List<Cliente> findByFatturatoAnnualeGreaterThan(int minFatturato);
+    List<Cliente> findByDataInserimentoAfter(LocalDate dataInserimento);
+    List<Cliente> findByDataUltimoContattoAfter(LocalDate dataUltimoContatto);
+
+
+    @Query("SELECT c FROM Cliente c WHERE LOWER(c.nome) LIKE LOWER(CONCAT('%', :parteDelNome, '%'))")
+    List<Cliente> findByParteDelNome(@Param("parteDelNome") String parteDelNome);
 
 }

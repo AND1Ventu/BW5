@@ -13,8 +13,13 @@ public class Indirizzo {
     private String via;
     private String civico;
     private String localita;
+    private Comune comune;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
-    private Comune comune;
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "id_provincia")
+    private Provincia provincia;
 }

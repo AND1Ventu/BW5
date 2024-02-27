@@ -63,6 +63,9 @@ public class UtenteService {
     }
 
     public void deleteUtente(int id){
-        utenteRepository.deleteById(id).orElseThrow(()->new NotFoundException("Utente non trovato"));
+        if (!utenteRepository.existsById(id)) {
+            throw new NotFoundException("Utente non trovato");
+        }
+        utenteRepository.deleteById(id);
     }
 }

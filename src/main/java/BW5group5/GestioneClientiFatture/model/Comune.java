@@ -11,11 +11,14 @@ public class Comune {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
+    @Column(name = "comune", columnDefinition = "VARCHAR(255)")
     private String comune;
     private int cap;
 
     @ManyToOne
-    @JoinColumn(name = "sigla", referencedColumnName = "sigla")
+    @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
 }
+

@@ -68,4 +68,43 @@ public class ClienteService {
         cliente.setIndirizzi(clienteRequest.getIndirizzi());
         cliente.setFatture(clienteRequest.getFatture());
     }
+
+    public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByOrderByNome(pageable);
+    }
+
+    public Page<Cliente> getAllClientiOrderedByFatturatoAnnuale(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByOrderByFatturatoAnnuale(pageable);
+    }
+
+    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByOrderByDataInserimento(pageable);
+    }
+
+    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(pageable);
+    }
+
+    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByOrderBySedeLegaleProvincia(pageable);
+    }
+
+    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByFatturatoAnnualeGreaterThan(int fatturato);
+    }
+
+    public Page<Cliente> findAllClientiByDataInserimento(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByDataInserimentoAfter(LocalDate dataInserimento);
+    }
+
+    public Page<Cliente> findAllClientiByDataUltimoContatto(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(LocalDate dataUltimoContatto);
+    }
+
+    public Page<Cliente> findAllClientiByParteNome(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByParteDelNome(pageable);
+    }
+
+
+
 }

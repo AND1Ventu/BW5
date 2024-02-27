@@ -16,6 +16,23 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>, Pagi
 
     public Optional<Cliente> deleteById(int id);
 
+    List<Cliente> findByOrderByNome(Pageable pageable);
+    List<Cliente> findByOrderByFatturatoAnnuale(Pageable pageable);
+    List<Cliente> findByOrderByDataInserimento(Pageable pageable);
+    List<Cliente> findByOrderByDataUltimoContatto();
+
+    List<Cliente> findByOrderBySedeLegaleProvincia(Pageable pageable);
+
+
+    List<Cliente> findByFatturatoAnnualeGreaterThan(int minFatturato);
+    List<Cliente> findByDataInserimentoAfter(LocalDate dataInserimento);
+    List<Cliente> findByDataUltimoContattoAfter(Pageable dataUltimoContatto);
+
+
+    @Query("SELECT c FROM Cliente c WHERE LOWER(c.nome) LIKE LOWER(CONCAT('%', :parteDelNome, '%'))")
+    List<Cliente> findByParteDelNome(@Param("parteDelNome") String parteDelNome);
+
+
 
 }
 

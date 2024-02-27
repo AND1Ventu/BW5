@@ -19,31 +19,35 @@ public class FatturaController {
     private FatturaService fatturaService;
 
     @GetMapping("/fatture")
-    public List<Fattura> getAll(){
+    public List<Fattura> getAll() {
         return fatturaService.getAllFatture();
     }
+
     @GetMapping("/fatture/{id}")
-    public Fattura getFatturaById(@PathVariable int id){
+    public Fattura getFatturaById(@PathVariable int id) {
         return fatturaService.getFatturaById(id);
     }
+
     @PutMapping("/fatture/{id}")
-    public Fattura updateFattura(@PathVariable int id, @RequestBody @Validated FatturaRequest fatturaRequest, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+    public Fattura updateFattura(@PathVariable int id, @RequestBody @Validated FatturaRequest fatturaRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             throw new BadRequestException(bindingResult.getAllErrors().toString());
         }
 
         return fatturaService.updateFattura(id, fatturaRequest);
 
     }
+
     @PostMapping("/fatture/{id}")
-    public Fattura saveFattura(@RequestBody @Validated FatturaRequest fatturaRequest, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+    public Fattura saveFattura(@RequestBody @Validated FatturaRequest fatturaRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             throw new BadRequestException(bindingResult.getAllErrors().toString());
         }
 
         return fatturaService.saveFattura(fatturaRequest);
     }
-    public void deleteFattura(Fattura fattura) {
-        fatturaRepository.delete(fattura);
+    @DeleteMapping("/fatture/{id}")
+    public void deleteFattura(@PathVariable int id){
+        fatturaService.deleteFattura(id);
     }
 }

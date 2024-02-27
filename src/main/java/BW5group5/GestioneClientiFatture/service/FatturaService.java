@@ -26,9 +26,11 @@ public class FatturaService {
                 .orElseThrow(() -> new NotFoundException("Fattura non trovata"));
     }
     public Fattura saveFattura(FatturaRequest fatturaRequest) {
-        return fatturaRepository.save(fatturaRequest);
+        Fattura fattura = new Fattura(fatturaRequest.getDataEmissione(), fatturaRequest.getImporto(), fatturaRequest.getStato(), fatturaRequest.getCliente());
+        return fatturaRepository.save(fattura);
     }
-    public void deleteFattura(Fattura fattura) {
+    public void deleteFattura(int id) {
+        Fattura fattura = getFatturaById(id);
         fatturaRepository.delete(fattura);
     }
 

@@ -18,4 +18,11 @@ public class Fattura {
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
+
+    public Fattura(LocalDate dataEmissione, int importo, String stato, Cliente cliente) {
+        this.dataEmissione = dataEmissione;
+        this.importo = importo;
+        this.stato = stato;
+        this.cliente = cliente;
+    }
 }

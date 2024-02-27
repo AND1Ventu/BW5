@@ -1,5 +1,6 @@
 package BW5group5.GestioneClientiFatture.dto;
 
+import BW5group5.GestioneClientiFatture.model.Cliente;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -19,6 +20,6 @@ public class FatturaRequest {
 
 
     @NotNull(message = "Il campo 'cliente' non può essere vuoto")
-    private ClienteRequest cliente;
+    private Cliente cliente;
 
 }

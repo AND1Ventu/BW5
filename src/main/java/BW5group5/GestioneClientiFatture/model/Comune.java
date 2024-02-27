@@ -12,8 +12,10 @@ public class Comune {
     @Column(name = "id_comune")
     private int id;
     private String comune;
-    private String provincia;
-    private String sigla;
     private int cap;
+
+    @ManyToOne
+    @JoinColumn(name = "sigla")
+    private Provincia provincia;
 
 }

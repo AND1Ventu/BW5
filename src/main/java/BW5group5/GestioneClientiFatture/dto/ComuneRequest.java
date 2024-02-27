@@ -1,5 +1,6 @@
 package BW5group5.GestioneClientiFatture.dto;
 
+import BW5group5.GestioneClientiFatture.model.Provincia;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -10,12 +11,9 @@ public class ComuneRequest {
     @NotBlank(message = "Il campo 'comune' non può essere vuoto")
     private String comune;
 
-    @NotBlank(message = "Il campo 'provincia' non può essere vuoto")
-    private String provincia;
-
-    @NotBlank(message = "Il campo 'sigla' non può essere vuoto")
-    private String sigla;
-
     @NotNull(message = "Il campo 'cap' non può essere vuoto")
     private int cap;
+
+    @NotNull(message = "Il campo 'provincia' non può essere vuoto")
+    private Provincia provincia;
 }

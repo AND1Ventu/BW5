@@ -29,10 +29,10 @@ public class Cliente {
     private String logoAziendale;
     private TipoAzienda tipoAzienda;
 
-    @OneToMany(mappedBy = "addresses")
+    @OneToMany(mappedBy = "cliente")
     private List<Indirizzo> indirizzi;
 
-    @OneToMany(mappedBy = "fattura")
+    @OneToMany(mappedBy = "cliente")
     private List<Fattura> fatture;
 
 }

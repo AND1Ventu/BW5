@@ -14,7 +14,7 @@ public class Indirizzo {
     private String civico;
     private String localita;
 
-    @OneToOne
-    @JoinColumn(name = "id_comune", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private Comune comune;
 }

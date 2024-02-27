@@ -10,7 +10,6 @@ import java.util.List;
 public class Provincia {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String sigla;
 
     private String provincia;

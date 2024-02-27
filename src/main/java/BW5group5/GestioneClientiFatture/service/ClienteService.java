@@ -68,33 +68,4 @@ public class ClienteService {
         cliente.setIndirizzi(clienteRequest.getIndirizzi());
         cliente.setFatture(clienteRequest.getFatture());
     }
-
-    public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
-        return (Page<Cliente>) clienteRepository.findByOrderByNome(pageable);
-    }
-
-    public Page<Cliente> getAllClientiOrderedByFatturatoAnnuale(Pageable pageable) {
-        return (Page<Cliente>) clienteRepository.findByOrderByFatturatoAnnuale(pageable);
-    }
-
-    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
-        return (Page<Cliente>) clienteRepository.findByOrderByDataInserimento(pageable);
-    }
-
-    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
-        return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(pageable);
-    }
-    List<Cliente> findByOrderByDataUltimoContatto();
-
-    List<Cliente> findByOrderBySedeLegaleProvincia();
-
-
-    List<Cliente> findByFatturatoAnnualeGreaterThan(int minFatturato);
-    List<Cliente> findByDataInserimentoAfter(LocalDate dataInserimento);
-    List<Cliente> findByDataUltimoContattoAfter(LocalDate dataUltimoContatto);
-
-
-    @Query("SELECT c FROM Cliente c WHERE LOWER(c.nome) LIKE LOWER(CONCAT('%', :parteDelNome, '%'))")
-    List<Cliente> findByParteDelNome(@Param("parteDelNome") String parteDelNome);
-
 }

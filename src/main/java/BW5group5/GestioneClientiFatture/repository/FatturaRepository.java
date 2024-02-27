@@ -17,13 +17,4 @@ import java.util.List;
 
 public interface FatturaRepository extends JpaRepository<Fattura, Integer>, PagingAndSortingRepository<Fattura, Integer> {
 
-    List<Fattura> findByCliente(Cliente cliente);
-    List<Fattura> findByStato(String stato);
-    List<Fattura> findByData(LocalDate data);
-    List<Fattura> findByAnno(int anno);
-
-    @Query("SELECT f FROM Fattura f WHERE f.importo BETWEEN :minImporto AND :maxImporto")
-    List<Fattura> findByImportoRange(@Param("minImporto") BigDecimal minImporto, @Param("maxImporto") BigDecimal maxImporto);
-
-
 }

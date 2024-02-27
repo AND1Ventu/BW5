@@ -64,9 +64,4 @@ public class ClienteController {
         return clienteService.uploadAvatar(id,
                 (String) cloudinary.uploader().upload(file.getBytes(), new HashMap<>()).get("url"));
     }
-
-    @GetMapping("/clienti/ordered")
-    public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
-        return clienteService.getAllClientiOrderedByName(pageable);
-    }
 }

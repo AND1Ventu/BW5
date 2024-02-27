@@ -63,4 +63,11 @@ public class ClienteService {
         cliente.setIndirizzi(clienteRequest.getIndirizzi());
         cliente.setFatture(clienteRequest.getFatture());
     }
+
+    public Page<Cliente> getAllClientiOrdered(Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByOrderByNome(pageable);
+    }
+
+
+
 }

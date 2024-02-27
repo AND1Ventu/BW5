@@ -3,6 +3,8 @@ package BW5group5.GestioneClientiFatture.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 public class Indirizzo {
@@ -15,6 +17,9 @@ public class Indirizzo {
     private String localita;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
+    @JoinColumn(name = "id_comune")
     private Comune comune;
+
+    @ManyToMany(mappedBy = "indirizzi")
+    private List<Cliente> clienti;
 }

@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class IndirizzoService {
     @Autowired
@@ -18,8 +20,8 @@ public class IndirizzoService {
     @Autowired
     private ComuneService comuneService;
 
-    public Page<Indirizzo> getAll(Pageable pageable){
-        return indirizzoRepository.findAll(pageable);
+    public List<Indirizzo> getAll(){
+        return indirizzoRepository.findAll();
     }
 
     public Indirizzo getIndirizzoById(int id) throws NotFoundException {

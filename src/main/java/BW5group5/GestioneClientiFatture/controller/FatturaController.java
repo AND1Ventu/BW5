@@ -1,10 +1,8 @@
 package BW5group5.GestioneClientiFatture.controller;
 
 import BW5group5.GestioneClientiFatture.dto.FatturaRequest;
-import BW5group5.GestioneClientiFatture.dto.UtenteRequest;
 import BW5group5.GestioneClientiFatture.exception.BadRequestException;
 import BW5group5.GestioneClientiFatture.model.Fattura;
-import BW5group5.GestioneClientiFatture.model.Utente;
 import BW5group5.GestioneClientiFatture.service.FatturaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;

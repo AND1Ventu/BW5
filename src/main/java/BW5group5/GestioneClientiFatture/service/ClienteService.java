@@ -82,7 +82,7 @@ public class ClienteService {
     }
 
     public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
-        return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(pageable);
+        return (Page<Cliente>) clienteRepository.findByOrderByDataUltimoContatto(pageable);
     }
 
     public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
@@ -90,21 +90,18 @@ public class ClienteService {
     }
 
     public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
-        return (Page<Cliente>) clienteRepository.findByFatturatoAnnualeGreaterThan(int fatturato);
+        return (Page<Cliente>) clienteRepository.findByOrderByFatturatoAnnuale(pageable);
     }
 
-    public Page<Cliente> findAllClientiByDataInserimento(Pageable pageable) {
-        return (Page<Cliente>) clienteRepository.findByDataInserimentoAfter(LocalDate dataInserimento);
+    public Page<Cliente> findAllClientiByDataInserimento(LocalDate dataInserimento, Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByDataInserimentoAfter(dataInserimento, pageable);
     }
 
-    public Page<Cliente> findAllClientiByDataUltimoContatto(Pageable pageable) {
-        return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(LocalDate dataUltimoContatto);
+    public Page<Cliente> findAllClientiByDataUltimoContatto(LocalDate dataUltimoContatto, Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(dataUltimoContatto, pageable);
     }
 
-    public Page<Cliente> findAllClientiByParteNome(Pageable pageable) {
-        return (Page<Cliente>) clienteRepository.findByParteDelNome(pageable);
+    public Page<Cliente> findAllClientiByParteNome(String parteDelNome, Pageable pageable) {
+        return (Page<Cliente>) clienteRepository.findByParteDelNome(parteDelNome, pageable);
     }
-
-
-
 }

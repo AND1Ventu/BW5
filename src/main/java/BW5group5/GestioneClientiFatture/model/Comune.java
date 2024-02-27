@@ -9,13 +9,13 @@ public class Comune {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_comune")
+    @Column(name = "id")
     private int id;
     private String comune;
     private int cap;
 
     @ManyToOne
-    @JoinColumn(name = "sigla")
+    @JoinColumn(name = "sigla", referencedColumnName = "sigla")
     private Provincia provincia;
 
 }

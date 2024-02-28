@@ -62,22 +62,22 @@ public class FatturaController {
 
     @GetMapping("/fatture/find/stato")
     public Page<Fattura> findFatturaByStato(@RequestParam("stato") String stato, Pageable pageable) {
-        return  fatturaService.findFatturaByStato(stato);
+        return  fatturaService.findByStato(stato, pageable);
     }
 
     @GetMapping("/fatture/find/data")
     public Page<Fattura> findFatturaByData(@RequestParam("data") LocalDate data, Pageable pageable) {
-        return (Page<Fattura>) fatturaService.findFatturaByData(data);
+        return (Page<Fattura>) fatturaService.findByData(data, pageable);
     }
 
     @GetMapping("/fatture/find/anno")
-    public Page<Fattura> findFatturaByAnno(@RequestParam("anno") int anno, Pageable pageable) {
-        return (Page<Fattura>) fatturaService.findFatturaByAnno(anno);
+    public Page<Fattura> findFatturaByAnno(@RequestParam("anno") LocalDate anno, Pageable pageable) {
+        return (Page<Fattura>) fatturaService.findByAnno(anno, pageable);
     }
 
     @GetMapping("/fatture/find/importoRange")
-    public Page<Fattura> findFatturaByImportoRange(@RequestParam("min") BigDecimal min, @RequestParam("max") BigDecimal max, Pageable pageable) {
-        return (Page<Fattura>) fatturaService.findFatturaByImportoRange(min, max);
+    public Page<Fattura> findFatturaByImportoRange(@RequestParam("min") double min, @RequestParam("max") double max, Pageable pageable) {
+        return (Page<Fattura>) fatturaService.findByImportoRange(min, max, pageable);
     }
 
 

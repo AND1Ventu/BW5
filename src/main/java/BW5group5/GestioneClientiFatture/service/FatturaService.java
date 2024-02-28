@@ -52,24 +52,24 @@ public class FatturaService {
         return fatturaRepository.save(fattura);
     }
 
-    public Page<Fattura> findFatturaByCliente(int id) {
+    public Page<Fattura> findByCliente(int id, Pageable pageable) {
         Cliente cliente = clienteService.getClienteById(id);
         return fatturaRepository.findByCliente(cliente);
     }
 
-    public Page<Fattura> findFatturaByStato(String stato) {
+    public Page<Fattura> findByStato(String stato, Pageable pageable) {
         return fatturaRepository.findByStato(stato);
     }
 
-    public Page<Fattura> findFatturaByData(LocalDate data) {
+    public Page<Fattura> findByData(LocalDate data, Pageable pageable) {
         return fatturaRepository.findByData(data);
     }
 
-    public Page<Fattura> findFatturaByAnno(int anno) {
-        return fatturaRepository.findByAnno(anno);
+    public Page<Fattura> findByAnno(LocalDate data, Pageable pageable) {
+        return fatturaRepository.findByAnno(data);
     }
 
-    public Page<Fattura> findFatturaByImportoRange(BigDecimal min, BigDecimal max){
+    public Page<Fattura> findByImportoRange(double min, double max, Pageable pageable){
         return fatturaRepository.findByImportoRange(min, max);
     }
 }

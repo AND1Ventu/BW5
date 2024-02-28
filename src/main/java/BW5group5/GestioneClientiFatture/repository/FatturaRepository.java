@@ -14,14 +14,16 @@ import org.springframework.data.repository.query.Param;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface FatturaRepository extends JpaRepository<Fattura, Integer>, PagingAndSortingRepository<Fattura, Integer> {
 
-    Page<Fattura> findByCliente(Pageable pageable);
-    Page<Fattura> findByStato(Pageable pageable);
-    Page<Fattura> findByData(Pageable pageable);
-    Page<Fattura> findByAnno(Pageable pageable);
+    Page<Fattura> findByCliente(Cliente cliente);
+    Page<Fattura> findByStato(String stato);
+    Page<Fattura> findByData(LocalDate date);
 
+    @Query("SELECT f FROM Fattura f WHERE YEAR(f.dataEmissione) == :data")
+    Page<Fattura> findByAnno(@Param("data") LocalDate date);
     @Query("SELECT f FROM Fattura f WHERE f.importo BETWEEN :minImporto AND :maxImporto")
     Page<Fattura> findByImportoRange(@Param("minImporto") double minImporto, @Param("maxImporto") double maxImporto);
 

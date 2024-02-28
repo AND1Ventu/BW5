@@ -51,6 +51,7 @@ public class ClienteService {
     }
 
     private void mapClienteRequestToCliente(ClienteRequest clienteRequest, Cliente cliente) {
+
         cliente.setRagioneSociale(clienteRequest.getRagioneSociale());
         cliente.setPartitaIva(clienteRequest.getPartitaIva());
         cliente.setEmail(clienteRequest.getEmail());
@@ -63,10 +64,7 @@ public class ClienteService {
         cliente.setNomeContatto(clienteRequest.getNomeContatto());
         cliente.setCognomeContatto(clienteRequest.getCognomeContatto());
         cliente.setTelefonoContatto(clienteRequest.getTelefonoContatto());
-        cliente.setLogoAziendale(clienteRequest.getLogoAziendale());
         cliente.setTipoAzienda(clienteRequest.getTipoAzienda());
-        cliente.setIndirizzi(clienteRequest.getIndirizzi());
-        cliente.setFatture(clienteRequest.getFatture());
     }
 
 

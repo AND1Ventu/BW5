@@ -54,23 +54,23 @@ public class FatturaService {
 
     public Page<Fattura> findByCliente(int id, Pageable pageable) {
         Cliente cliente = clienteService.getClienteById(id);
-        return fatturaRepository.findByCliente(cliente);
+        return fatturaRepository.findByCliente(cliente, pageable);
     }
 
     public Page<Fattura> findByStato(String stato, Pageable pageable) {
-        return fatturaRepository.findByStato(stato);
+        return fatturaRepository.findByStato(stato, pageable);
     }
 
-    public Page<Fattura> findByData(LocalDate data, Pageable pageable) {
-        return fatturaRepository.findByData(data);
+    public Page<Fattura> findByDataEmissione(LocalDate data, Pageable pageable) {
+        return fatturaRepository.findByDataEmissione(data, pageable);
     }
 
     public Page<Fattura> findByAnno(LocalDate data, Pageable pageable) {
-        return fatturaRepository.findByAnno(data);
+        return fatturaRepository.findByAnno(data, pageable);
     }
 
     public Page<Fattura> findByImportoRange(double min, double max, Pageable pageable){
-        return fatturaRepository.findByImportoRange(min, max);
+        return fatturaRepository.findByImportoRange(min, max, pageable);
     }
 }
 

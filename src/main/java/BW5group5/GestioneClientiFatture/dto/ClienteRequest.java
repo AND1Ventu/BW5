@@ -52,17 +52,8 @@ public class ClienteRequest {
     @NotBlank(message = "Il campo 'telefonoContatto' non può essere vuoto")
     private String telefonoContatto;
 
-    @NotBlank(message = "Il campo 'logoAziendale' non può essere vuoto")
-    private String logoAziendale;
-
     @NotNull(message = "Il campo 'tipoAzienda' non può essere vuoto")
     private TipoAzienda tipoAzienda;
-
-    @OneToMany(mappedBy = "indirizzi")
-    private List<Indirizzo> indirizzi;
-
-    @OneToMany(mappedBy = "fatture")
-    private List<Fattura> fatture;
 
 
 }

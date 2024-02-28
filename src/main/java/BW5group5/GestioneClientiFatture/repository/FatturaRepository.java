@@ -18,14 +18,14 @@ import java.util.Optional;
 
 public interface FatturaRepository extends JpaRepository<Fattura, Integer>, PagingAndSortingRepository<Fattura, Integer> {
 
-    Page<Fattura> findByCliente(Cliente cliente);
-    Page<Fattura> findByStato(String stato);
-    Page<Fattura> findByData(LocalDate date);
+    Page<Fattura> findByCliente(Cliente cliente, Pageable pageable);
+    Page<Fattura> findByStato(String stato, Pageable pageable);
+    Page<Fattura> findByDataEmissione(LocalDate date, Pageable pageable);
 
-    @Query("SELECT f FROM Fattura f WHERE YEAR(f.dataEmissione) == :data")
-    Page<Fattura> findByAnno(@Param("data") LocalDate date);
+    @Query("SELECT f FROM Fattura f WHERE YEAR(f.dataEmissione) = :data")
+    Page<Fattura> findByAnno(@Param("data") LocalDate date, Pageable pageable);
     @Query("SELECT f FROM Fattura f WHERE f.importo BETWEEN :minImporto AND :maxImporto")
-    Page<Fattura> findByImportoRange(@Param("minImporto") double minImporto, @Param("maxImporto") double maxImporto);
+    Page<Fattura> findByImportoRange(@Param("minImporto") double minImporto, @Param("maxImporto") double maxImporto, Pageable pageable);
 
 
 }

@@ -26,7 +26,6 @@ public class UtenteService {
         utente.setEmail(utenteRequest.getEmail());
         utente.setNome(utenteRequest.getNome());
         utente.setCognome(utenteRequest.getCognome());
-        utente.setAvatar(utenteRequest.getAvatar());
         utente.setTipologia(Tipologia.USER);
 
         return utenteRepository.save(utente);
@@ -50,7 +49,7 @@ public class UtenteService {
         utente.setEmail(utenteRequest.getEmail());
         utente.setNome(utenteRequest.getNome());
         utente.setCognome(utenteRequest.getCognome());
-        utente.setAvatar(utenteRequest.getAvatar());
+        utente.setTipologia(utenteRequest.getTipologia());
 
         return utenteRepository.save(utente);
     }

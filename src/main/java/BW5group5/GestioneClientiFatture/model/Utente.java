@@ -19,7 +19,6 @@ public class Utente implements UserDetails {
 
     @Column(unique = true)
     private String username;
-
     private String passwordHashed;
     private String email;
     private String nome;

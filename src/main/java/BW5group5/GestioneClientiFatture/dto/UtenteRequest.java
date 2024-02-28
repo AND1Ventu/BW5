@@ -11,11 +11,13 @@ public class UtenteRequest {
     @NotBlank(message = "Username obbligatorio")
     private String username;
     @NotBlank(message = "Password obbligatoria")
-    private String passwordHashed;
+    private String password;
     @NotBlank(message = "Email obbligatoria")
     private String email;
     @NotBlank(message = "Nome obbligatorio")
     private String nome;
     @NotBlank(message = "Cognome obbligatorio")
     private String cognome;
+    @NotNull(message = "Tipologia obbligatoria")
+    private Tipologia tipologia;
 }

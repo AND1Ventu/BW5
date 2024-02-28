@@ -90,21 +90,25 @@ public class ClienteController {
     public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
         return clienteService.getAllClientiOrderedBySedeLegaleProvincia(pageable);
     }
-}
 
 
-public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
-    return (Page<Cliente>) clienteRepository.findByOrderByFatturatoAnnuale(pageable);
-}
+    @GetMapping("/clienti/ordered/fatturato")
+    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
+        return clienteService.findAllClientiByFatturato(pageable);
+    }
 
-public Page<Cliente> findAllClientiByDataInserimento(LocalDate dataInserimento, Pageable pageable) {
-    return (Page<Cliente>) clienteRepository.findByDataInserimentoAfter(dataInserimento, pageable);
-}
+    @GetMapping("/clienti/ordered/dataInserimento")
+    public Page<Cliente> findAllClientiByDataInserimento(@RequestParam("dataInserimento") LocalDate dataInserimento, Pageable pageable) {
+        return clienteService.findAllClientiByDataInserimento(dataInserimento, pageable);
+    }
 
-public Page<Cliente> findAllClientiByDataUltimoContatto(LocalDate dataUltimoContatto, Pageable pageable) {
-    return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(dataUltimoContatto, pageable);
-}
+    @GetMapping("/clienti/ordered/dataUltimoContatto")
+    public Page<Cliente> findAllClientiByDataUltimoContatto(@RequestParam("dataUltimoContatto") LocalDate dataUltimoContatto, Pageable pageable) {
+        return clienteService.findAllClientiByDataUltimoContatto(dataUltimoContatto, pageable);
+    }
 
-public Page<Cliente> findAllClientiByParteNome(String parteDelNome, Pageable pageable) {
-    return (Page<Cliente>) clienteRepository.findByParteDelNome(parteDelNome, pageable);
+    @GetMapping("/clienti/nome")
+    public Page<Cliente> findAllClientiByParteNome(@RequestParam("parteDelNome") String parteDelNome, Pageable pageable) {
+        return clienteService.findAllClientiByParteNome(parteDelNome, pageable);
+    }
 }

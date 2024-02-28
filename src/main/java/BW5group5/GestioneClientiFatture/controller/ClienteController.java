@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 
 @RestController
@@ -64,4 +65,46 @@ public class ClienteController {
         return clienteService.uploadAvatar(id,
                 (String) cloudinary.uploader().upload(file.getBytes(), new HashMap<>()).get("url"));
     }
+
+    @GetMapping("/clienti/ordered/name")
+    public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
+        return clienteService.getAllClientiOrderedByName(pageable);
+    }
+
+    @GetMapping("/clienti/ordered/fatturato")
+    public Page<Cliente> getAllClientiOrderedByFatturato(Pageable pageable) {
+        return clienteService.getAllClientiOrderedByFatturatoAnnuale(pageable);
+    }
+
+    @GetMapping("/clienti/ordered/dataInserimento")
+    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
+        return clienteService.getAllClientiOrderedByDataInserimento(pageable);
+    }
+
+    @GetMapping("/clienti/ordered/dataUltiimoContatto")
+    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
+        return clienteService.getAllClientiOrderedByDataUltimoContatto(pageable);
+    }
+
+    @GetMapping("/clienti/ordered/sedeLegaleProvincia")
+    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
+        return clienteService.getAllClientiOrderedBySedeLegaleProvincia(pageable);
+    }
+}
+
+
+public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
+    return (Page<Cliente>) clienteRepository.findByOrderByFatturatoAnnuale(pageable);
+}
+
+public Page<Cliente> findAllClientiByDataInserimento(LocalDate dataInserimento, Pageable pageable) {
+    return (Page<Cliente>) clienteRepository.findByDataInserimentoAfter(dataInserimento, pageable);
+}
+
+public Page<Cliente> findAllClientiByDataUltimoContatto(LocalDate dataUltimoContatto, Pageable pageable) {
+    return (Page<Cliente>) clienteRepository.findByDataUltimoContattoAfter(dataUltimoContatto, pageable);
+}
+
+public Page<Cliente> findAllClientiByParteNome(String parteDelNome, Pageable pageable) {
+    return (Page<Cliente>) clienteRepository.findByParteDelNome(parteDelNome, pageable);
 }

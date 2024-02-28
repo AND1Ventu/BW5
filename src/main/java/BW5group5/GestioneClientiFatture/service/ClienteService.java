@@ -63,10 +63,7 @@ public class ClienteService {
         cliente.setNomeContatto(clienteRequest.getNomeContatto());
         cliente.setCognomeContatto(clienteRequest.getCognomeContatto());
         cliente.setTelefonoContatto(clienteRequest.getTelefonoContatto());
-        cliente.setLogoAziendale(clienteRequest.getLogoAziendale());
         cliente.setTipoAzienda(clienteRequest.getTipoAzienda());
-        cliente.setIndirizzi(clienteRequest.getIndirizzi());
-        cliente.setFatture(clienteRequest.getFatture());
     }
 
 

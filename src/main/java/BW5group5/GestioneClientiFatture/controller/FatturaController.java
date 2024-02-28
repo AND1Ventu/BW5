@@ -3,14 +3,20 @@ package BW5group5.GestioneClientiFatture.controller;
 import BW5group5.GestioneClientiFatture.dto.FatturaRequest;
 import BW5group5.GestioneClientiFatture.dto.UtenteRequest;
 import BW5group5.GestioneClientiFatture.exception.BadRequestException;
+import BW5group5.GestioneClientiFatture.model.Cliente;
 import BW5group5.GestioneClientiFatture.model.Fattura;
 import BW5group5.GestioneClientiFatture.model.Utente;
 import BW5group5.GestioneClientiFatture.service.FatturaService;
+import BW5group5.GestioneClientiFatture.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -18,9 +24,12 @@ public class FatturaController {
     @Autowired
     private FatturaService fatturaService;
 
+    @Autowired
+    private ClienteService clienteService;
+
     @GetMapping("/fatture")
-    public List<Fattura> getAll() {
-        return fatturaService.getAllFatture();
+    public Page<Fattura> getAll(Pageable pageable) {
+        return fatturaService.getAllFatture(pageable);
     }
 
     @GetMapping("/fatture/{id}")
@@ -43,11 +52,33 @@ public class FatturaController {
         if (bindingResult.hasErrors()) {
             throw new BadRequestException(bindingResult.getAllErrors().toString());
         }
-
         return fatturaService.saveFattura(fatturaRequest);
     }
+
     @DeleteMapping("/fatture/{id}")
     public void deleteFattura(@PathVariable int id){
         fatturaService.deleteFattura(id);
     }
+
+    @GetMapping("/fatture/find/stato")
+    public Page<Fattura> findFatturaByStato(@RequestParam("stato") String stato, Pageable pageable) {
+        return  fatturaService.findFatturaByStato(stato);
+    }
+
+    @GetMapping("/fatture/find/data")
+    public Page<Fattura> findFatturaByData(@RequestParam("data") LocalDate data, Pageable pageable) {
+        return (Page<Fattura>) fatturaService.findFatturaByData(data);
+    }
+
+    @GetMapping("/fatture/find/anno")
+    public Page<Fattura> findFatturaByAnno(@RequestParam("anno") int anno, Pageable pageable) {
+        return (Page<Fattura>) fatturaService.findFatturaByAnno(anno);
+    }
+
+    @GetMapping("/fatture/find/importoRange")
+    public Page<Fattura> findFatturaByImportoRange(@RequestParam("min") BigDecimal min, @RequestParam("max") BigDecimal max, Pageable pageable) {
+        return (Page<Fattura>) fatturaService.findFatturaByImportoRange(min, max);
+    }
+
+
 }

@@ -92,17 +92,17 @@ public class ClienteController {
     }
 
 
-    @GetMapping("/clienti/ordered/fatturato")
+    @GetMapping("/clienti/find/fatturato")
     public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
         return clienteService.findAllClientiByFatturato(pageable);
     }
 
-    @GetMapping("/clienti/ordered/dataInserimento")
+    @GetMapping("/clienti/find/dataInserimento")
     public Page<Cliente> findAllClientiByDataInserimento(@RequestParam("dataInserimento") LocalDate dataInserimento, Pageable pageable) {
         return clienteService.findAllClientiByDataInserimento(dataInserimento, pageable);
     }
 
-    @GetMapping("/clienti/ordered/dataUltimoContatto")
+    @GetMapping("/clienti/find/dataUltimoContatto")
     public Page<Cliente> findAllClientiByDataUltimoContatto(@RequestParam("dataUltimoContatto") LocalDate dataUltimoContatto, Pageable pageable) {
         return clienteService.findAllClientiByDataUltimoContatto(dataUltimoContatto, pageable);
     }

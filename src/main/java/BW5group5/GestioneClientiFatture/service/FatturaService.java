@@ -6,8 +6,15 @@ import BW5group5.GestioneClientiFatture.model.Cliente;
 import BW5group5.GestioneClientiFatture.model.Fattura;
 import BW5group5.GestioneClientiFatture.repository.FatturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -17,8 +24,8 @@ public class FatturaService {
     @Autowired
     private ClienteService clienteService;
 
-    public List<Fattura> getAllFatture() {
-        return fatturaRepository.findAll();
+    public Page<Fattura> getAllFatture(Pageable pageable) {
+        return fatturaRepository.findAll(pageable);
     }
 
     public Fattura getFatturaById(int id) throws NotFoundException {
@@ -44,4 +51,26 @@ public class FatturaService {
         fattura.setCliente(cliente);
         return fatturaRepository.save(fattura);
     }
+
+    public Page<Fattura> findFatturaByCliente(int id) {
+        Cliente cliente = clienteService.getClienteById(id);
+        return fatturaRepository.findByCliente(cliente);
+    }
+
+    public Page<Fattura> findFatturaByStato(String stato) {
+        return fatturaRepository.findByStato(stato);
+    }
+
+    public Page<Fattura> findFatturaByData(LocalDate data) {
+        return fatturaRepository.findByData(data);
+    }
+
+    public Page<Fattura> findFatturaByAnno(int anno) {
+        return fatturaRepository.findByAnno(anno);
+    }
+
+    public Page<Fattura> findFatturaByImportoRange(BigDecimal min, BigDecimal max){
+        return fatturaRepository.findByImportoRange(min, max);
+    }
 }
+

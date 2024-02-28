@@ -69,6 +69,7 @@ public class ClienteService {
         cliente.setFatture(clienteRequest.getFatture());
     }
 
+
     public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
         return (Page<Cliente>) clienteRepository.findByOrderByNome(pageable);
     }

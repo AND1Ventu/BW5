@@ -68,13 +68,13 @@ public class ClienteController {
 
     @GetMapping("/clienti/ordered/name")
     public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
-        return clienteService.getAllClientiOrderedByName(pageable);
+        return clienteService.getAllClientiOrderedByRagioneSociale(pageable);
     }
 
-    @GetMapping("/clienti/ordered/fatturato")
-    public Page<Cliente> getAllClientiOrderedByFatturato(Pageable pageable) {
-        return clienteService.getAllClientiOrderedByFatturatoAnnuale(pageable);
-    }
+//    @GetMapping("/clienti/ordered/fatturato")
+//    public Page<Cliente> getAllClientiOrderedByFatturato(Pageable pageable) {
+//        return clienteService.getAllClientiOrderedByFatturatoAnnuale(pageable);
+//    }
 
     @GetMapping("/clienti/ordered/dataInserimento")
     public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
@@ -86,16 +86,16 @@ public class ClienteController {
         return clienteService.getAllClientiOrderedByDataUltimoContatto(pageable);
     }
 
-    @GetMapping("/clienti/ordered/sedeLegaleProvincia")
-    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
-        return clienteService.getAllClientiOrderedBySedeLegaleProvincia(pageable);
-    }
+//    @GetMapping("/clienti/ordered/sedeLegaleProvincia")
+//    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
+//        return clienteService.getAllClientiOrderedBySedeLegaleProvincia(pageable);
+//    }
 
 
-    @GetMapping("/clienti/find/fatturato")
-    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
-        return clienteService.findAllClientiByFatturato(pageable);
-    }
+//    @GetMapping("/clienti/find/fatturato")
+//    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
+//        return clienteService.findAllClientiByFatturato(pageable);
+//    }
 
     @GetMapping("/clienti/find/dataInserimento")
     public Page<Cliente> findAllClientiByDataInserimento(@RequestParam("dataInserimento") LocalDate dataInserimento, Pageable pageable) {

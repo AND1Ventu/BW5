@@ -15,6 +15,8 @@ public class Indirizzo {
     private String via;
     private String civico;
     private String localita;
+    private TipoSede tipoSede;
+
 
     @ManyToOne
     @JoinColumn(name = "id_comune")

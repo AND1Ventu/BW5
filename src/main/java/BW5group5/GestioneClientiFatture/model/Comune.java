@@ -20,12 +20,7 @@ public class Comune {
     @JoinColumn(name = "sigla", referencedColumnName = "sigla")
     private Provincia provincia;
 
-    @ManyToMany
-    @JoinTable(
-            name = "comune_indirizzo",
-            joinColumns = @JoinColumn(name = "id_comune"),
-            inverseJoinColumns = @JoinColumn(name = "id_indirizzo")
-    )
-    private List<Indirizzo> indirizzi;
 
+    @OneToMany(mappedBy = "comune")
+    private List<Indirizzo> indirizzi;
 }

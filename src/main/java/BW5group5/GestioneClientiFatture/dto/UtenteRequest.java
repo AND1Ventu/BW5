@@ -18,7 +18,4 @@ public class UtenteRequest {
     private String nome;
     @NotBlank(message = "Cognome obbligatorio")
     private String cognome;
-
-    @NotNull(message = "Tipologia obbligatoria")
-    private Tipologia tipologia;
 }

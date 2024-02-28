@@ -45,7 +45,7 @@ public class UtenteService {
         Utente utente = getUtenteById(id);
 
         utente.setUsername(utenteRequest.getUsername());
-        utente.setPasswordHashed(utenteRequest.getPassword());
+        utente.setPassword(utenteRequest.getPassword());
         utente.setEmail(utenteRequest.getEmail());
         utente.setNome(utenteRequest.getNome());
         utente.setCognome(utenteRequest.getCognome());
@@ -56,7 +56,6 @@ public class UtenteService {
 
     public Utente updateTipologiaUtente(int id,String tipologia){
         Utente utente = getUtenteById(id);
-
         utente.setTipologia(Tipologia.valueOf(tipologia));
         return utenteRepository.save(utente);
     }

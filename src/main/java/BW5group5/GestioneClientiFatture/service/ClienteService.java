@@ -1,5 +1,6 @@
 package BW5group5.GestioneClientiFatture.service;
 
+import java.time.LocalDate;
 import BW5group5.GestioneClientiFatture.dto.ClienteRequest;
 import BW5group5.GestioneClientiFatture.exception.NotFoundException;
 import BW5group5.GestioneClientiFatture.model.Cliente;
@@ -11,7 +12,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,7 +22,7 @@ public class ClienteService {
 
     public Cliente saveCliente(ClienteRequest clienteRequest) {
         Cliente cliente = new Cliente();
-        mapClienteRequestToCliente(clienteRequest, cliente);
+        mapClienteRequestToCliente(clienteRequest, cliente, true);
         return clienteRepository.save(cliente);
     }
 
@@ -34,9 +34,9 @@ public class ClienteService {
         return clienteRepository.findAll(pageable);
     }
 
-    public Cliente updateCliente(int id, ClienteRequest clienteRequest) {
+    public Cliente updateCliente(int id, ClienteRequest clienteRequest ) {
         Cliente cliente = getClienteById(id);
-        mapClienteRequestToCliente(clienteRequest, cliente);
+        mapClienteRequestToCliente(clienteRequest, cliente, false);
         return clienteRepository.save(cliente);
     }
 
@@ -50,11 +50,11 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    private void mapClienteRequestToCliente(ClienteRequest clienteRequest, Cliente cliente) {
+    private void mapClienteRequestToCliente(ClienteRequest clienteRequest, Cliente cliente, boolean firstTime) {
         cliente.setRagioneSociale(clienteRequest.getRagioneSociale());
         cliente.setPartitaIva(clienteRequest.getPartitaIva());
         cliente.setEmail(clienteRequest.getEmail());
-        cliente.setDataInserimento(clienteRequest.getDataInserimento());
+        if (firstTime) cliente.setDataInserimento(LocalDate.now());
         cliente.setDataUltimoContatto(clienteRequest.getDataUltimoContatto());
         cliente.setFatturatoAnnuale(clienteRequest.getFatturatoAnnuale());
         cliente.setPec(clienteRequest.getPec());
@@ -63,10 +63,7 @@ public class ClienteService {
         cliente.setNomeContatto(clienteRequest.getNomeContatto());
         cliente.setCognomeContatto(clienteRequest.getCognomeContatto());
         cliente.setTelefonoContatto(clienteRequest.getTelefonoContatto());
-        cliente.setLogoAziendale(clienteRequest.getLogoAziendale());
         cliente.setTipoAzienda(clienteRequest.getTipoAzienda());
-        cliente.setIndirizzi(clienteRequest.getIndirizzi());
-        cliente.setFatture(clienteRequest.getFatture());
     }
 
 

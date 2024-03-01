@@ -23,7 +23,7 @@ public interface FatturaRepository extends JpaRepository<Fattura, Integer>, Pagi
     Page<Fattura> findByDataEmissione(LocalDate date, Pageable pageable);
 
     @Query("SELECT f FROM Fattura f WHERE YEAR(f.dataEmissione) = :data")
-    Page<Fattura> findByAnno(@Param("data") LocalDate date, Pageable pageable);
+    Page<Fattura> findByAnno(@Param("data") String date, Pageable pageable);
     @Query("SELECT f FROM Fattura f WHERE f.importo BETWEEN :minImporto AND :maxImporto")
     Page<Fattura> findByImportoRange(@Param("minImporto") double minImporto, @Param("maxImporto") double maxImporto, Pageable pageable);
 

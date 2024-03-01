@@ -71,7 +71,7 @@ public class FatturaController {
     }
 
     @GetMapping("/fatture/find/anno")
-    public Page<Fattura> findFatturaByAnno(@RequestParam("anno") LocalDate anno, Pageable pageable) {
+    public Page<Fattura> findFatturaByAnno(@RequestParam("anno") String anno, Pageable pageable) {
         return (Page<Fattura>) fatturaService.findByAnno(anno, pageable);
     }
 

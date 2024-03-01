@@ -70,7 +70,7 @@ public class FatturaService {
         return fatturaRepository.findByDataEmissione(data, pageable);
     }
 
-    public Page<Fattura> findByAnno(LocalDate data, Pageable pageable) {
+    public Page<Fattura> findByAnno(String data, Pageable pageable) {
         return fatturaRepository.findByAnno(data, pageable);
     }
 

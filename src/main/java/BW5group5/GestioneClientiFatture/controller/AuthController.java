@@ -40,7 +40,7 @@ public class AuthController {
 
         Utente utente = utenteService.getUtenteByUsername(loginRequest.getUsername());
 
-        if(encoder.matches(loginRequest.getPassword(), utente.getPasswordHashed())){
+        if(encoder.matches(loginRequest.getPassword(), utente.getPassword())){
             return jwtTools.createToken(utente);
         }
         else{

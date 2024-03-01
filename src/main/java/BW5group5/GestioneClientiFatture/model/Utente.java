@@ -19,7 +19,7 @@ public class Utente implements UserDetails {
 
     @Column(unique = true)
     private String username;
-    private String passwordHashed;
+    private String password;
     private String email;
     private String nome;
     private String cognome;
@@ -35,7 +35,7 @@ public class Utente implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
 

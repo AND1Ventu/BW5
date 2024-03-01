@@ -28,13 +28,13 @@ public class IndirizzoService {
         return indirizzoRepository.findById(id).orElseThrow(() -> new NotFoundException("Indirizzo con id=" + id + " non trovata"));
     }
 
-    public Indirizzo saveIndirizzo(int idComune, IndirizzoRequest indirizzoRequest) throws NotFoundException {
+    public Indirizzo saveIndirizzo(IndirizzoRequest indirizzoRequest) throws NotFoundException {
 
-        Comune comune = comuneService.findComuneById(idComune);
+        Comune comune = comuneService.findComuneById(indirizzoRequest.getIdComune());
 
         Indirizzo indirizzo = new Indirizzo();
         indirizzo.setVia(indirizzoRequest.getVia());
-        indirizzo.setCivico(indirizzo.getCivico());
+        indirizzo.setCivico(indirizzoRequest.getCivico());
         indirizzo.setLocalita(indirizzoRequest.getLocalita());
         indirizzo.setComune(comune);
 

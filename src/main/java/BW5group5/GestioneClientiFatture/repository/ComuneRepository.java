@@ -7,6 +7,8 @@ import BW5group5.GestioneClientiFatture.model.Comune;
 
 public interface ComuneRepository extends JpaRepository<Comune, Integer>, PagingAndSortingRepository<Comune, Integer> {
 
-    Comune findComuneById(int id);
+    Comune findById(int id);
+
+    Comune findByComune(String comune);
 
 }

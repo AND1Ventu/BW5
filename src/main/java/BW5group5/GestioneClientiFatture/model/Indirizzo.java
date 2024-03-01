@@ -22,6 +22,18 @@ public class Indirizzo {
     @JoinColumn(name = "id_comune")
     private Comune comune;
 
+    @Override
+    public String toString() {
+        return "Indirizzo{" +
+                "idIndirizzo=" + idIndirizzo +
+                ", via='" + via + '\'' +
+                ", civico='" + civico + '\'' +
+                ", localita='" + localita + '\'' +
+                ", tipoSede=" + tipoSede +
+                ", comune=" + comune.getComune() +
+                '}';
+    }
+
     @ManyToMany(mappedBy = "indirizzi")
     private List<Cliente> clienti;
 }

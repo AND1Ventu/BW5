@@ -3,6 +3,7 @@ package BW5group5.GestioneClientiFatture.service;
 import BW5group5.GestioneClientiFatture.repository.ComuneRepository;
 import BW5group5.GestioneClientiFatture.model.Comune;
 import BW5group5.GestioneClientiFatture.model.Provincia;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +14,11 @@ import java.io.InputStreamReader;
 @Service
 public class ComuneService {
 
+    @Autowired
     private final ComuneRepository comuneRepository;
+
+    @Autowired
+    private ProvinciaService provinciaService;
 
     public ComuneService(ComuneRepository comuneRepository) {
         this.comuneRepository = comuneRepository;
@@ -40,15 +45,15 @@ public class ComuneService {
         comune.setComune(values[0].trim());
         comune.setCap(Integer.parseInt(values[2].trim()));
 
-        Provincia provincia = new Provincia();
-        provincia.setSigla(values[1].trim());
-        comune.setProvincia(provincia);
+        Provincia provincia = provinciaService.findProvinciaBySigla(values[1].trim());
 
         comuneRepository.save(comune);
     }
 
     public Comune findComuneById(int id) {
-        return comuneRepository.findComuneById(id);
+        return comuneRepository.findById(id);
     }
+
+
 }
 

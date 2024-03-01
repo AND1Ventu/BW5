@@ -22,7 +22,7 @@ public class ProvinciaController {
     }
 
     @PostMapping("/upload-csv")
-    public ResponseEntity<String> uploadCSVFile(@RequestParam("src/main/resources/static/elenco_province_italiane.csv") MultipartFile file) {
+    public ResponseEntity<String> uploadCSVFile(@RequestParam("upload-csv") MultipartFile file) {
         if (file.isEmpty()) {
             return new ResponseEntity<>("Please upload a CSV file.", HttpStatus.BAD_REQUEST);
         }

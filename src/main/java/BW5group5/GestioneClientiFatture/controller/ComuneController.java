@@ -22,7 +22,7 @@ public class ComuneController {
     }
 
     @PostMapping("/upload-csv")
-    public ResponseEntity<String> uploadCSVFile(@RequestParam("src/main/resources/static/listacomuni.csv") MultipartFile file) {
+    public ResponseEntity<String> uploadCSVFile(@RequestParam("path") MultipartFile file) {
         if (file.isEmpty()) {
             return new ResponseEntity<>("Please upload a CSV file.", HttpStatus.BAD_REQUEST);
         }

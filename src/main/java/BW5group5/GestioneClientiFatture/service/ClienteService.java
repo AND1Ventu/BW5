@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import BW5group5.GestioneClientiFatture.dto.ClienteRequest;
 import BW5group5.GestioneClientiFatture.exception.NotFoundException;
 import BW5group5.GestioneClientiFatture.model.Cliente;
+import BW5group5.GestioneClientiFatture.model.TipoSede;
 import BW5group5.GestioneClientiFatture.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -71,35 +72,35 @@ public class ClienteService {
         return clienteRepository.findByOrderByRagioneSociale(pageable);
     }
 
-    public Page<Cliente> getAllClientiOrderedByFatturatoAnnuale(Pageable pageable) {
-        return clienteRepository.findByOrderByFatturatoAnnuale(pageable);
-    }
-
-    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
-        return clienteRepository.findByOrderByDataInserimento(pageable);
-    }
-
-    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
-        return clienteRepository.findByOrderByDataUltimoContatto(pageable);
-    }
-
-//    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
-//        return clienteRepository.findByOrderBySedeLegaleProvincia(pageable);
+//    public Page<Cliente> getAllClientiOrderedByFatturatoAnnuale(Pageable pageable) {
+//        return clienteRepository.findByOrderByFatturatoAnnuale(pageable);
 //    }
+//
+//    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
+//        return clienteRepository.findByOrderByDataInserimento(pageable);
+//    }
+//
+//    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
+//        return clienteRepository.findByOrderByDataUltimoContatto(pageable);
+//    }
+
+    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(TipoSede tipoSede,Pageable pageable) {
+        return clienteRepository.findByProvinciaSedeLegale(tipoSede,pageable);
+    }
 
 //    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
 //        return clienteRepository.findByOrderByFatturatoAnnuale(pageable);
 //    }
-
-    public Page<Cliente> findAllClientiByDataInserimento(LocalDate dataInserimento, Pageable pageable) {
-        return clienteRepository.findByDataInserimentoAfter(dataInserimento, pageable);
-    }
-
-    public Page<Cliente> findAllClientiByDataUltimoContatto(LocalDate dataUltimoContatto, Pageable pageable) {
-        return clienteRepository.findByDataUltimoContattoAfter(dataUltimoContatto, pageable);
-    }
-
-    public Page<Cliente> findAllClientiByParteNome(String parteDelNome, Pageable pageable) {
-        return clienteRepository.findByParteDelNome(parteDelNome, pageable);
-    }
+//
+//    public Page<Cliente> findAllClientiByDataInserimento(LocalDate dataInserimento, Pageable pageable) {
+//        return clienteRepository.findByDataInserimentoAfter(dataInserimento, pageable);
+//    }
+//
+//    public Page<Cliente> findAllClientiByDataUltimoContatto(LocalDate dataUltimoContatto, Pageable pageable) {
+//        return clienteRepository.findByDataUltimoContattoAfter(dataUltimoContatto, pageable);
+//    }
+//
+//    public Page<Cliente> findAllClientiByParteNome(String parteDelNome, Pageable pageable) {
+//        return clienteRepository.findByParteDelNome(parteDelNome, pageable);
+//    }
 }

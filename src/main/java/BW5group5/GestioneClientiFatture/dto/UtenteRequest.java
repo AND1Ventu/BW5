@@ -11,7 +11,7 @@ public class UtenteRequest {
     @NotBlank(message = "Username obbligatorio")
     private String username;
     @NotBlank(message = "Password obbligatoria")
-    private String password;
+    private String passwordHashed;
     @NotBlank(message = "Email obbligatoria")
     private String email;
     @NotBlank(message = "Nome obbligatorio")

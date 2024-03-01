@@ -22,7 +22,7 @@ public class UtenteService {
         Utente utente = new Utente();
 
         utente.setUsername(utenteRequest.getUsername());
-        utente.setPassword(encoder.encode(utenteRequest.getPassword()));
+        utente.setPasswordHashed(encoder.encode(utenteRequest.getPasswordHashed()));
         utente.setEmail(utenteRequest.getEmail());
         utente.setNome(utenteRequest.getNome());
         utente.setCognome(utenteRequest.getCognome());
@@ -45,7 +45,7 @@ public class UtenteService {
         Utente utente = getUtenteById(id);
 
         utente.setUsername(utenteRequest.getUsername());
-        utente.setPassword(utenteRequest.getPassword());
+        utente.setPasswordHashed(utenteRequest.getPasswordHashed());
         utente.setEmail(utenteRequest.getEmail());
         utente.setNome(utenteRequest.getNome());
         utente.setCognome(utenteRequest.getCognome());

@@ -15,5 +15,5 @@ public class ComuneRequest {
     private int cap;
 
     @NotNull(message = "Il campo 'provincia' non può essere vuoto")
-    private Provincia provincia;
+    private int idProvincia;
 }

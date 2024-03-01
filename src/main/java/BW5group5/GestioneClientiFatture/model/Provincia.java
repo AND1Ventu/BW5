@@ -1,5 +1,6 @@
 package BW5group5.GestioneClientiFatture.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,6 +15,14 @@ public class Provincia {
 
     private String provincia;
 
+    @Override
+    public String toString() {
+        return "Provincia{" +
+                "sigla='" + sigla + '\'' +
+                '}';
+    }
+
+    @JsonIgnore
     @OneToMany(mappedBy = "provincia")
     private List<Comune> comuni;
 }

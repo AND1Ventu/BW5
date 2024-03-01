@@ -31,12 +31,12 @@ public class IndirizzoController {
         }
         return indirizzoService.updateIndirizzo(idComune, indirizzoRequest);
     }
-    @PostMapping("/indirizzi/{id}")
-    public Indirizzo saveIndirizzo(@PathVariable int idComune, @RequestBody @Validated IndirizzoRequest indirizzoRequest, BindingResult bindingResult) {
+    @PostMapping("/indirizzi")
+    public Indirizzo saveIndirizzo(@RequestBody @Validated IndirizzoRequest indirizzoRequest, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new BadRequestException(bindingResult.getAllErrors().toString());
         }
-        return indirizzoService.saveIndirizzo(idComune, indirizzoRequest);
+        return indirizzoService.saveIndirizzo( indirizzoRequest);
     }
     @DeleteMapping("/indirizzi/{id}")
     public void deleteIndirizzi(@PathVariable int id){

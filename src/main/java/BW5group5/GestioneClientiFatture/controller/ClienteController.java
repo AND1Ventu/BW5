@@ -92,6 +92,11 @@ public class ClienteController {
         return clienteService.getAllClientiOrderedBySedeLegaleProvincia(tiposede, pageable);
     }
 
+    @PatchMapping("/clienti/setIndirizzo")
+    public Cliente setIndirizzoCliente(@RequestParam("id_cliente") int id_cliente, @RequestParam("id_indirizzo") int id_indirizzo){
+        return clienteService.setIndirizzoCliente(id_cliente,id_indirizzo);
+    }
+
 
 //    @GetMapping("/clienti/find/fatturato")
 //    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {

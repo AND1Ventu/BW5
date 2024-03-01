@@ -46,6 +46,7 @@ public class ProvinciaService {
     }
 
     public Provincia findProvinciaBySigla(String sigla) {
-        return provinciaRepository.findProvinciaBySigla(sigla);
+        return provinciaRepository.findBySigla(sigla);
     }
+
 }

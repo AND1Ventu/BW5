@@ -19,13 +19,11 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>, Pagi
     public Optional<Cliente> deleteById(int id);
 
       Page<Cliente> findByOrderByRagioneSociale(Pageable pageable);
-//    Page<Cliente> findByOrderByFatturatoAnnuale(Pageable pageable);
-//    Page<Cliente> findByOrderByDataInserimento(Pageable pageable);
-//    Page<Cliente> findByOrderByDataUltimoContatto(Pageable pageable);
-//
-//    Page<Cliente> findByFatturatoAnnualeGreaterThan(int minFatturato);
-//    Page<Cliente> findByDataInserimentoAfter(LocalDate dataInserimento, Pageable pageable);
-//    Page<Cliente> findByDataUltimoContattoAfter(LocalDate dataUltimoContatto, Pageable pageable);
+      Page<Cliente> findByOrderByFatturatoAnnuale(Pageable pageable);
+    Page<Cliente> findByOrderByDataInserimento(Pageable pageable);
+    Page<Cliente> findByOrderByDataUltimoContatto(Pageable pageable);
+    Page<Cliente> findByDataInserimentoAfter(LocalDate data, Pageable pageable);
+    Page<Cliente> findByDataUltimoContattoAfter(LocalDate data,Pageable pageable);
 
 
     @Query("SELECT c\n" +
@@ -33,9 +31,9 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>, Pagi
         "JOIN c.indirizzi i\n" +
         "JOIN i.comune co\n" +
         "JOIN co.provincia p\n" +
-        "WHERE i.tipoSede = :sede_legale\n" +
+        "WHERE i.tipoSede = SEDE_LEGALE\n" +
         "ORDER BY p.provincia")
-    Page<Cliente> findByProvinciaSedeLegale (@Param("sede_legale") TipoSede tipoSede, Pageable pageable);
+    Page<Cliente> findByProvinciaSedeLegale (Pageable pageable);
     @Query("SELECT c FROM Cliente c WHERE LOWER(c.ragioneSociale) LIKE LOWER(CONCAT('%', :parteDelNome, '%'))")
     Page<Cliente> findByParteDelNome(@Param("parteDelNome") String parteDelNome, Pageable pageable);
 

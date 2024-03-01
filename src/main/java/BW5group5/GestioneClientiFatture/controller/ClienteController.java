@@ -72,24 +72,24 @@ public class ClienteController {
         return clienteService.getAllClientiOrderedByRagioneSociale(pageable);
     }
 
-//    @GetMapping("/clienti/sorted/fatturato")
-//    public Page<Cliente> getAllClientiOrderedByFatturato(Pageable pageable) {
-//        return clienteService.getAllClientiOrderedByFatturatoAnnuale(pageable);
-//    }
-//
-//    @GetMapping("/clienti/sorted/dataInserimento")
-//    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
-//        return clienteService.getAllClientiOrderedByDataInserimento(pageable);
-//    }
-//
-//    @GetMapping("/clienti/sorted/dataUltiimoContatto")
-//    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
-//        return clienteService.getAllClientiOrderedByDataUltimoContatto(pageable);
-//    }
+    @GetMapping("/clienti/sorted/fatturato")
+    public Page<Cliente> getAllClientiOrderedByFatturato(Pageable pageable) {
+        return clienteService.getAllClientiOrderedByFatturatoAnnuale(pageable);
+    }
+
+    @GetMapping("/clienti/sorted/dataInserimento")
+    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
+        return clienteService.getAllClientiOrderedByDataInserimento(pageable);
+    }
+
+    @GetMapping("/clienti/sorted/dataUltiimoContatto")
+    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
+        return clienteService.getAllClientiOrderedByDataUltimoContatto(pageable);
+    }
 
     @GetMapping("/clienti/sorted/sedeLegaleProvincia")
-    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(@RequestParam("sede_legale") TipoSede tiposede, Pageable pageable) {
-        return clienteService.getAllClientiOrderedBySedeLegaleProvincia(tiposede, pageable);
+    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia( Pageable pageable) {
+        return clienteService.getAllClientiOrderedBySedeLegaleProvincia( pageable);
     }
 
     @PatchMapping("/clienti/setIndirizzo")
@@ -98,23 +98,23 @@ public class ClienteController {
     }
 
 
-//    @GetMapping("/clienti/find/fatturato")
-//    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
-//        return clienteService.findAllClientiByFatturato(pageable);
-//    }
-//
-//    @GetMapping("/clienti/find/dataInserimento")
-//    public Page<Cliente> findAllClientiByDataInserimento(@RequestParam("dataInserimento") LocalDate dataInserimento, Pageable pageable) {
-//        return clienteService.findAllClientiByDataInserimento(dataInserimento, pageable);
-//    }
-//
-//    @GetMapping("/clienti/find/dataUltimoContatto")
-//    public Page<Cliente> findAllClientiByDataUltimoContatto(@RequestParam("dataUltimoContatto") LocalDate dataUltimoContatto, Pageable pageable) {
-//        return clienteService.findAllClientiByDataUltimoContatto(dataUltimoContatto, pageable);
-//    }
-//
-//    @GetMapping("/clienti/nome")
-//    public Page<Cliente> findAllClientiByParteNome(@RequestParam("parteDelNome") String parteDelNome, Pageable pageable) {
-//        return clienteService.findAllClientiByParteNome(parteDelNome, pageable);
-//    }
+    @GetMapping("/clienti/find/fatturato")
+    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
+        return clienteService.findAllClientiByFatturato(pageable);
+    }
+
+    @GetMapping("/clienti/find/dataInserimento")
+    public Page<Cliente> findAllClientiByDataInserimento( @RequestParam("data") LocalDate data, Pageable pageable) {
+        return clienteService.findAllClientiByDataInserimento( data, pageable);
+    }
+
+    @GetMapping("/clienti/find/dataUltimoContatto")
+    public Page<Cliente> findAllClientiByDataUltimoContatto(@RequestParam("data") LocalDate data,Pageable pageable) {
+        return clienteService.findAllClientiByDataUltimoContatto( data,pageable);
+    }
+
+    @GetMapping("/clienti/nome")
+    public Page<Cliente> findAllClientiByParteNome(@RequestParam("parteDelNome") String parteDelNome, Pageable pageable) {
+        return clienteService.findAllClientiByParteNome(parteDelNome, pageable);
+    }
 }

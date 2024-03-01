@@ -1,5 +1,6 @@
 package BW5group5.GestioneClientiFatture.dto;
 
+import BW5group5.GestioneClientiFatture.model.TipoSede;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -18,6 +19,8 @@ public class IndirizzoRequest {
 
     @NotNull(message = "Il campo 'comune' non può essere vuoto")
     private int idComune;
+
+    private TipoSede tipoSede;
 
 }
 

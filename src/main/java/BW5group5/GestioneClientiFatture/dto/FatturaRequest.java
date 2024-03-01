@@ -20,6 +20,6 @@ public class FatturaRequest {
 
 
     @NotNull(message = "Il campo 'cliente' non può essere vuoto")
-    private Cliente cliente;
+    private int idCliente;
 
 }

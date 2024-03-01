@@ -89,35 +89,35 @@ public class ClienteService {
         return clienteRepository.findByOrderByRagioneSociale(pageable);
     }
 
-//    public Page<Cliente> getAllClientiOrderedByFatturatoAnnuale(Pageable pageable) {
-//        return clienteRepository.findByOrderByFatturatoAnnuale(pageable);
-//    }
-//
-//    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
-//        return clienteRepository.findByOrderByDataInserimento(pageable);
-//    }
-//
-//    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
-//        return clienteRepository.findByOrderByDataUltimoContatto(pageable);
-//    }
-
-    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(TipoSede tipoSede,Pageable pageable) {
-        return clienteRepository.findByProvinciaSedeLegale(tipoSede,pageable);
+    public Page<Cliente> getAllClientiOrderedByFatturatoAnnuale(Pageable pageable) {
+        return clienteRepository.findByOrderByFatturatoAnnuale(pageable);
     }
 
-//    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
-//        return clienteRepository.findByOrderByFatturatoAnnuale(pageable);
-//    }
-//
-//    public Page<Cliente> findAllClientiByDataInserimento(LocalDate dataInserimento, Pageable pageable) {
-//        return clienteRepository.findByDataInserimentoAfter(dataInserimento, pageable);
-//    }
-//
-//    public Page<Cliente> findAllClientiByDataUltimoContatto(LocalDate dataUltimoContatto, Pageable pageable) {
-//        return clienteRepository.findByDataUltimoContattoAfter(dataUltimoContatto, pageable);
-//    }
-//
-//    public Page<Cliente> findAllClientiByParteNome(String parteDelNome, Pageable pageable) {
-//        return clienteRepository.findByParteDelNome(parteDelNome, pageable);
-//    }
+    public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
+        return clienteRepository.findByOrderByDataInserimento(pageable);
+    }
+
+    public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
+        return clienteRepository.findByOrderByDataUltimoContatto(pageable);
+    }
+
+    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
+        return clienteRepository.findByProvinciaSedeLegale(pageable);
+    }
+
+    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
+        return clienteRepository.findByOrderByFatturatoAnnuale(pageable);
+    }
+
+    public Page<Cliente> findAllClientiByDataInserimento( LocalDate data, Pageable pageable) {
+        return clienteRepository.findByDataInserimentoAfter( data, pageable);
+    }
+
+    public Page<Cliente> findAllClientiByDataUltimoContatto( LocalDate data, Pageable pageable) {
+        return clienteRepository.findByDataUltimoContattoAfter(data, pageable);
+    }
+
+    public Page<Cliente> findAllClientiByParteNome(String parteDelNome, Pageable pageable) {
+        return clienteRepository.findByParteDelNome(parteDelNome, pageable);
+    }
 }

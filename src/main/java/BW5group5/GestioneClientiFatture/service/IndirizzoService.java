@@ -39,6 +39,7 @@ public class IndirizzoService {
         indirizzo.setCivico(indirizzoRequest.getCivico());
         indirizzo.setLocalita(indirizzoRequest.getLocalita());
         indirizzo.setComune(comune);
+        indirizzo.setTipoSede(indirizzoRequest.getTipoSede());
 
         return indirizzoRepository.save(indirizzo);
 

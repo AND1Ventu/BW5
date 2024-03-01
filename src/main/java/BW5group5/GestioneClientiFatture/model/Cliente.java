@@ -39,6 +39,7 @@ public class Cliente {
     )
     private List<Indirizzo> indirizzi;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Fattura> fatture;
 

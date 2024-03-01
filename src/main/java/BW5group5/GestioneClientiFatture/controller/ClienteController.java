@@ -66,27 +66,27 @@ public class ClienteController {
                 (String) cloudinary.uploader().upload(file.getBytes(), new HashMap<>()).get("url"));
     }
 
-    @GetMapping("/clienti/ordered/name")
+    @GetMapping("/clienti/sorted/name")
     public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
         return clienteService.getAllClientiOrderedByRagioneSociale(pageable);
     }
 
-//    @GetMapping("/clienti/ordered/fatturato")
+//    @GetMapping("/clienti/sorted/fatturato")
 //    public Page<Cliente> getAllClientiOrderedByFatturato(Pageable pageable) {
 //        return clienteService.getAllClientiOrderedByFatturatoAnnuale(pageable);
 //    }
 
-    @GetMapping("/clienti/ordered/dataInserimento")
+    @GetMapping("/clienti/sorted/dataInserimento")
     public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
         return clienteService.getAllClientiOrderedByDataInserimento(pageable);
     }
 
-    @GetMapping("/clienti/ordered/dataUltiimoContatto")
+    @GetMapping("/clienti/sorted/dataUltiimoContatto")
     public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
         return clienteService.getAllClientiOrderedByDataUltimoContatto(pageable);
     }
 
-//    @GetMapping("/clienti/ordered/sedeLegaleProvincia")
+//    @GetMapping("/clienti/sorted/sedeLegaleProvincia")
 //    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
 //        return clienteService.getAllClientiOrderedBySedeLegaleProvincia(pageable);
 //    }

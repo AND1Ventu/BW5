@@ -2,8 +2,10 @@ package BW5group5.GestioneClientiFatture.service;
 
 import java.time.LocalDate;
 import BW5group5.GestioneClientiFatture.dto.ClienteRequest;
+import BW5group5.GestioneClientiFatture.dto.IndirizzoRequest;
 import BW5group5.GestioneClientiFatture.exception.NotFoundException;
 import BW5group5.GestioneClientiFatture.model.Cliente;
+import BW5group5.GestioneClientiFatture.model.Indirizzo;
 import BW5group5.GestioneClientiFatture.model.TipoSede;
 import BW5group5.GestioneClientiFatture.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
+    @Autowired
+    private IndirizzoService indirizzoService;
 
     public Cliente saveCliente(ClienteRequest clienteRequest) {
         Cliente cliente = new Cliente();
@@ -65,6 +69,19 @@ public class ClienteService {
         cliente.setCognomeContatto(clienteRequest.getCognomeContatto());
         cliente.setTelefonoContatto(clienteRequest.getTelefonoContatto());
         cliente.setTipoAzienda(clienteRequest.getTipoAzienda());
+
+    }
+
+    public Cliente setIndirizzoCliente (int id_cliente, int id_indirizzo){
+       Cliente cliente = getClienteById(id_cliente);
+        Indirizzo indirizzo = indirizzoService.getIndirizzoById(id_indirizzo);
+        if (cliente.getIndirizzi().size() >= 2){
+            throw new RuntimeException("Il cliente ha già due indirizzi");
+        }
+        else{
+            cliente.getIndirizzi().add(indirizzo);
+            return clienteRepository.save(cliente);
+        }
     }
 
 

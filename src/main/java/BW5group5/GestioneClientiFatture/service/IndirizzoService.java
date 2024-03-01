@@ -2,8 +2,10 @@ package BW5group5.GestioneClientiFatture.service;
 
 import BW5group5.GestioneClientiFatture.dto.IndirizzoRequest;
 import BW5group5.GestioneClientiFatture.exception.NotFoundException;
+import BW5group5.GestioneClientiFatture.model.Cliente;
 import BW5group5.GestioneClientiFatture.model.Comune;
 import BW5group5.GestioneClientiFatture.model.Indirizzo;
+import BW5group5.GestioneClientiFatture.model.Utente;
 import BW5group5.GestioneClientiFatture.repository.IndirizzoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

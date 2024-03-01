@@ -31,14 +31,13 @@ public class SecurityChain {
         httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/auth/**").permitAll());
-//        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/utenti/**").hasAnyAuthority(Tipologia.ADMIN.name()));
-//        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/comuni/**").hasAnyAuthority(Tipologia.ADMIN.name()));
-//        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/provincie/**").hasAnyAuthority(Tipologia.ADMIN.name()));
-//        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/clienti/**").hasAnyAuthority(Tipologia.ADMIN.name()));
-//        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/fatture/**").hasAnyAuthority(Tipologia.ADMIN.name()));
-//        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/indirizzi/**").hasAnyAuthority(Tipologia.ADMIN.name()));
+        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/utenti/**").hasAnyAuthority(Tipologia.ADMIN.name()));
+        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/comuni/**").hasAnyAuthority(Tipologia.ADMIN.name()));
+        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/provincie/**").hasAnyAuthority(Tipologia.ADMIN.name()));
+       httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/clienti/**").hasAnyAuthority(Tipologia.ADMIN.name()));
+       httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/fatture/**").hasAnyAuthority(Tipologia.ADMIN.name()));
+        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/indirizzi/**").hasAnyAuthority(Tipologia.ADMIN.name()));
         httpSecurity.authorizeHttpRequests(request -> request.requestMatchers(HttpMethod.GET, "/**").hasAnyAuthority(Tipologia.USER.name()));
-        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/**").hasAnyAuthority(Tipologia.ADMIN.name()));
         httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/**").denyAll());
 
 

@@ -47,7 +47,7 @@ public class FatturaController {
 
     }
 
-    @PostMapping("/fatture/{id}")
+    @PostMapping("/fatture")
     public Fattura saveFattura(@RequestBody @Validated FatturaRequest fatturaRequest, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new BadRequestException(bindingResult.getAllErrors().toString());
@@ -79,6 +79,9 @@ public class FatturaController {
     public Page<Fattura> findFatturaByImportoRange(@RequestParam("min") double min, @RequestParam("max") double max, Pageable pageable) {
         return (Page<Fattura>) fatturaService.findByImportoRange(min, max, pageable);
     }
-
+    @GetMapping("/fatture/find/cliente")
+    public Page<Fattura> findFatturaByClinte(@RequestParam("id_cliente") int id ,Pageable pageable) {
+        return (Page<Fattura>) fatturaService.findByCliente(id, pageable);
+    }
 
 }

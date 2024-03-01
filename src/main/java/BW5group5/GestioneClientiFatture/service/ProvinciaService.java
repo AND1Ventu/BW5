@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 @Service
 public class ProvinciaService {
@@ -20,8 +21,9 @@ public class ProvinciaService {
 
     @Transactional
     public void saveProvinceFromCSV(MultipartFile file) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-            reader.readLine();
+        try {
+              BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
+//            reader.readLine();
 
             reader.lines().forEach(line -> saveProvinciaFromCSVLine(line));
         } catch (Exception e) {
@@ -30,10 +32,11 @@ public class ProvinciaService {
     }
 
     private void saveProvinciaFromCSVLine(String line) {
-        String[] values = line.split(";");
-        if (values.length != 3) {
-            throw new RuntimeException("Invalid CSV format");
-        }
+        String[] values = line.split(",");
+        Arrays.stream(values).forEach(System.out::println);
+//        if (values.length != 3) {
+//            throw new RuntimeException("Invalid CSV format");
+//        }
 
         Provincia provincia = new Provincia();
         provincia.setProvincia(values[1].trim());
@@ -43,6 +46,7 @@ public class ProvinciaService {
     }
 
     public Provincia findProvinciaBySigla(String sigla) {
-        return provinciaRepository.findProvinciaBySigla(sigla);
+        return provinciaRepository.findBySigla(sigla);
     }
+
 }

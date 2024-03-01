@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import BW5group5.GestioneClientiFatture.model.TipoAzienda;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,8 +26,6 @@ public class ClienteRequest {
     @NotBlank(message = "Il campo 'email' non può essere vuoto")
     private String email;
 
-    @NotNull(message = "Il campo 'dataInserimento' non può essere vuoto")
-    private LocalDate dataInserimento;
 
     @NotNull(message = "Il campo 'dataUltimoContatto' non può essere vuoto")
     private LocalDate dataUltimoContatto;

@@ -3,6 +3,7 @@ package BW5group5.GestioneClientiFatture.controller;
 import BW5group5.GestioneClientiFatture.dto.ClienteRequest;
 import BW5group5.GestioneClientiFatture.exception.BadRequestException;
 import BW5group5.GestioneClientiFatture.model.Cliente;
+import BW5group5.GestioneClientiFatture.model.TipoSede;
 import BW5group5.GestioneClientiFatture.service.ClienteService;
 import com.cloudinary.Cloudinary;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,45 +67,50 @@ public class ClienteController {
                 (String) cloudinary.uploader().upload(file.getBytes(), new HashMap<>()).get("url"));
     }
 
-    @GetMapping("/clienti/ordered/name")
+    @GetMapping("/clienti/sorted/name")
     public Page<Cliente> getAllClientiOrderedByName(Pageable pageable) {
         return clienteService.getAllClientiOrderedByRagioneSociale(pageable);
     }
 
-//    @GetMapping("/clienti/ordered/fatturato")
-//    public Page<Cliente> getAllClientiOrderedByFatturato(Pageable pageable) {
-//        return clienteService.getAllClientiOrderedByFatturatoAnnuale(pageable);
-//    }
+    @GetMapping("/clienti/sorted/fatturato")
+    public Page<Cliente> getAllClientiOrderedByFatturato(Pageable pageable) {
+        return clienteService.getAllClientiOrderedByFatturatoAnnuale(pageable);
+    }
 
-    @GetMapping("/clienti/ordered/dataInserimento")
+    @GetMapping("/clienti/sorted/dataInserimento")
     public Page<Cliente> getAllClientiOrderedByDataInserimento(Pageable pageable) {
         return clienteService.getAllClientiOrderedByDataInserimento(pageable);
     }
 
-    @GetMapping("/clienti/ordered/dataUltiimoContatto")
+    @GetMapping("/clienti/sorted/dataUltiimoContatto")
     public Page<Cliente> getAllClientiOrderedByDataUltimoContatto(Pageable pageable) {
         return clienteService.getAllClientiOrderedByDataUltimoContatto(pageable);
     }
 
-//    @GetMapping("/clienti/ordered/sedeLegaleProvincia")
-//    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia(Pageable pageable) {
-//        return clienteService.getAllClientiOrderedBySedeLegaleProvincia(pageable);
-//    }
+    @GetMapping("/clienti/sorted/sedeLegaleProvincia")
+    public Page<Cliente> getAllClientiOrderedBySedeLegaleProvincia( Pageable pageable) {
+        return clienteService.getAllClientiOrderedBySedeLegaleProvincia( pageable);
+    }
+
+    @PatchMapping("/clienti/setIndirizzo")
+    public Cliente setIndirizzoCliente(@RequestParam("id_cliente") int id_cliente, @RequestParam("id_indirizzo") int id_indirizzo){
+        return clienteService.setIndirizzoCliente(id_cliente,id_indirizzo);
+    }
 
 
-//    @GetMapping("/clienti/find/fatturato")
-//    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
-//        return clienteService.findAllClientiByFatturato(pageable);
-//    }
+    @GetMapping("/clienti/find/fatturato")
+    public Page<Cliente> findAllClientiByFatturato(Pageable pageable) {
+        return clienteService.findAllClientiByFatturato(pageable);
+    }
 
     @GetMapping("/clienti/find/dataInserimento")
-    public Page<Cliente> findAllClientiByDataInserimento(@RequestParam("dataInserimento") LocalDate dataInserimento, Pageable pageable) {
-        return clienteService.findAllClientiByDataInserimento(dataInserimento, pageable);
+    public Page<Cliente> findAllClientiByDataInserimento( @RequestParam("data") LocalDate data, Pageable pageable) {
+        return clienteService.findAllClientiByDataInserimento( data, pageable);
     }
 
     @GetMapping("/clienti/find/dataUltimoContatto")
-    public Page<Cliente> findAllClientiByDataUltimoContatto(@RequestParam("dataUltimoContatto") LocalDate dataUltimoContatto, Pageable pageable) {
-        return clienteService.findAllClientiByDataUltimoContatto(dataUltimoContatto, pageable);
+    public Page<Cliente> findAllClientiByDataUltimoContatto(@RequestParam("data") LocalDate data,Pageable pageable) {
+        return clienteService.findAllClientiByDataUltimoContatto( data,pageable);
     }
 
     @GetMapping("/clienti/nome")

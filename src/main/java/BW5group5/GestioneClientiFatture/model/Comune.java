@@ -1,5 +1,6 @@
 package BW5group5.GestioneClientiFatture.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,6 +22,9 @@ public class Comune {
     private Provincia provincia;
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "comune")
     private List<Indirizzo> indirizzi;
+
+
 }
